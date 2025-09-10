@@ -529,15 +529,16 @@ F-statistic: 0.05506 on 1 and 98 DF,  p-value: 0.815</code></pre>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">runif</span>(n,<span class="dv">5</span>,<span class="dv">10</span>)</span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>logs<span class="ot">=</span><span class="fu">rnorm</span>(n,<span class="dv">1</span><span class="fl">+0.2</span><span class="sc">*</span>X,<span class="fl">0.5</span>)</span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>Y<span class="ot">=</span><span class="fu">exp</span>(logs)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y)</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span><span class="fu">data.frame</span>(<span class="fu">cbind</span>(<span class="st">"X"</span><span class="ot">=</span>X,<span class="st">"Y"</span><span class="ot">=</span>Y))</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df[<span class="fu">order</span>(X),]</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting the model</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(<span class="fu">log</span>(Y)<span class="sc">~</span>X,<span class="at">data=</span>df)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Unit_4_files/figure-html/5-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span><span class="fu">data.frame</span>(<span class="fu">cbind</span>(<span class="st">"X"</span><span class="ot">=</span>X,<span class="st">"Y"</span><span class="ot">=</span>Y))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df[<span class="fu">order</span>(X),]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting the model</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(<span class="fu">log</span>(Y)<span class="sc">~</span>X,<span class="at">data=</span>df)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -558,54 +559,51 @@ Residual standard error: 0.4113 on 98 degrees of freedom
 Multiple R-squared:  0.3401,    Adjusted R-squared:  0.3333 
 F-statistic:  50.5 on 1 and 98 DF,  p-value: 1.937e-10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">=</span><span class="fu">summary</span>(model)<span class="sc">$</span>sigma</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Rolling average</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span>df<span class="sc">$</span>Y,df<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Unit_4_files/figure-html/5-7-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rm<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">rollmean</span>(zb,<span class="dv">25</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">type=</span><span class="st">'l'</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(X,Y)</span></span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">=</span><span class="fu">summary</span>(model)<span class="sc">$</span>sigma</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Rolling average</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span><span class="fu">exp</span>(<span class="fu">fitted.values</span>(model)),df<span class="sc">$</span>X)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span>df<span class="sc">$</span>Y,df<span class="sc">$</span>X)</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>rm<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">rollmean</span>(zb,<span class="dv">25</span>)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm<span class="sc">*</span><span class="fu">exp</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>),<span class="at">col=</span><span class="dv">6</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">type=</span><span class="st">'l'</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(X,Y)</span></span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervals for the mean at each time point </span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">data.frame</span>(<span class="st">"X"</span><span class="ot">=</span>df<span class="sc">$</span>X)</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>ivs<span class="ot">=</span><span class="fu">predict</span>(model, <span class="at">newdata =</span> nd,<span class="at">interval =</span> <span class="st">'prediction'</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>intervals<span class="ot">=</span><span class="fu">rowMeans</span>(<span class="fu">exp</span>(ivs))</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span>intervals,df<span class="sc">$</span>X)</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>rm<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">rollmean</span>(zb,<span class="dv">25</span>)</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lty=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">4</span>)</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervals for the mean at each time point - notice when we lower the level the performance increases... </span></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">data.frame</span>(<span class="st">"X"</span><span class="ot">=</span>df<span class="sc">$</span>X)</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>ivs<span class="ot">=</span><span class="fu">predict</span>(model, <span class="at">newdata =</span> nd,<span class="at">interval =</span> <span class="st">'prediction'</span>, <span class="at">level =</span> <span class="fl">0.8</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>intervals<span class="ot">=</span><span class="fu">rowMeans</span>(<span class="fu">exp</span>(ivs))</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span>intervals,df<span class="sc">$</span>X)</span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>rm<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">rollmean</span>(zb,<span class="dv">25</span>)</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">col=</span><span class="dv">7</span>,<span class="at">lty=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">4</span>)</span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervals for the mean at each time point using confidence intervals</span></span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="co"># ivs=predict(model, newdata = nd,interval = 'confidence', level = 0.8)[,2:3]</span></span>
-<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="co"># intervals=rowMeans(exp(ivs))</span></span>
-<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="co"># zb=zoo::zoo(x=intervals,df$X)</span></span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="co"># rm=zoo::rollmean(zb,25)</span></span>
-<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="co"># lines(attributes(rm)$index,rm,col=6,lty=3,lwd=3)</span></span>
-<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>,<span class="at">legend=</span><span class="fu">c</span>(<span class="st">"obs. rolling avg"</span>,<span class="st">"inverse predictions"</span>,<span class="st">"Pred int 95%"</span>,<span class="st">"Pred int 80%"</span>,<span class="st">"Bias cor."</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">6</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span><span class="fu">exp</span>(<span class="fu">fitted.values</span>(model)),df<span class="sc">$</span>X)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>rm<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">rollmean</span>(zb,<span class="dv">25</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm<span class="sc">*</span><span class="fu">exp</span>(s<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">2</span>),<span class="at">col=</span><span class="dv">6</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervals for the mean at each time point </span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">data.frame</span>(<span class="st">"X"</span><span class="ot">=</span>df<span class="sc">$</span>X)</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>ivs<span class="ot">=</span><span class="fu">predict</span>(model, <span class="at">newdata =</span> nd,<span class="at">interval =</span> <span class="st">'prediction'</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>intervals<span class="ot">=</span><span class="fu">rowMeans</span>(<span class="fu">exp</span>(ivs))</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span>intervals,df<span class="sc">$</span>X)</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>rm<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">rollmean</span>(zb,<span class="dv">25</span>)</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lty=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">4</span>)</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervals for the mean at each time point - notice when we lower the level the performance increases... </span></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>nd<span class="ot">=</span><span class="fu">data.frame</span>(<span class="st">"X"</span><span class="ot">=</span>df<span class="sc">$</span>X)</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>ivs<span class="ot">=</span><span class="fu">predict</span>(model, <span class="at">newdata =</span> nd,<span class="at">interval =</span> <span class="st">'prediction'</span>, <span class="at">level =</span> <span class="fl">0.8</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>intervals<span class="ot">=</span><span class="fu">rowMeans</span>(<span class="fu">exp</span>(ivs))</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>zb<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">zoo</span>(<span class="at">x=</span>intervals,df<span class="sc">$</span>X)</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>rm<span class="ot">=</span>zoo<span class="sc">::</span><span class="fu">rollmean</span>(zb,<span class="dv">25</span>)</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">attributes</span>(rm)<span class="sc">$</span>index,rm,<span class="at">col=</span><span class="dv">7</span>,<span class="at">lty=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">4</span>)</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervals for the mean at each time point using confidence intervals</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="co"># ivs=predict(model, newdata = nd,interval = 'confidence', level = 0.8)[,2:3]</span></span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="co"># intervals=rowMeans(exp(ivs))</span></span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="co"># zb=zoo::zoo(x=intervals,df$X)</span></span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="co"># rm=zoo::rollmean(zb,25)</span></span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a><span class="co"># lines(attributes(rm)$index,rm,col=6,lty=3,lwd=3)</span></span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>,<span class="at">legend=</span><span class="fu">c</span>(<span class="st">"obs. rolling avg"</span>,<span class="st">"inverse predictions"</span>,<span class="st">"Pred int 95%"</span>,<span class="st">"Pred int 80%"</span>,<span class="st">"Bias cor."</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">6</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Unit_4_files/figure-html/5-7-2.png" class="img-fluid" width="672"></p>
 </div>

@@ -551,7 +551,7 @@ mean of x
  28.16378 </code></pre>
 </div>
 </div>
-<p>We have that <span class="math inline">\(\left|\frac{\bar X-30}{\hat\sigma/\sqrt{n}}\right|=-10.28\)</span>. Using R, we get that the p-value is <span class="math inline">\(1.179\times 10^{-12}\)</span>.</p>
+<p>We have that <span class="math inline">\(\left|\frac{\bar X-30}{\hat\sigma/\sqrt{n}}\right|=10.28\)</span>. Using R, we get that the p-value is <span class="math inline">\(1.179\times 10^{-12}\)</span>.</p>
 <p>Here the p-value measures how much evidence there is against the null hypothesis. If the p-value is very small, then this constitutes strong evidence against the null hypothesis. If the p-value is small, but closer to 0.05, then there is evidence against the null. If it is larger, but still small, say 0.1, then this is weak evidence against the null hypothesis. It is not helpful to throw it away if it is above 0.05, therefore we should not just take <span class="math inline">\(\alpha=0.05\)</span>. Choosing <span class="math inline">\(\alpha\)</span> depends on how serious a type 1 error is. If it is not that serious, we can take <span class="math inline">\(\alpha\)</span> larger. If it is very serious, we can take <span class="math inline">\(\alpha\)</span> smaller.</p>
 <p>In this example, there is very strong evidence against the null hypothesis.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -782,8 +782,8 @@ Tip
 </div>
 </div>
 <ul>
-<li>For the one sample testing problem, i.e., you have a sample of <span class="math inline">\(n\)</span> normal random variables, with unknown mean and variance and you want to test whether <span class="math inline">\(H_0\colon \mu=0\)</span> vs.&nbsp;<span class="math inline">\(H_0\colon \mu\neq 0\)</span>, show that <span class="math inline">\(\frac{\bar X}{\hat\sigma/\sqrt{n}}\sim t_{n-1}\)</span> under the null hypothesis.</li>
-<li>What is the distribution of each of the following: <span class="math inline">\(\bar X,\bar Y,\hat\sigma\)</span> under the assumption of normal data with unknown mean and variance?</li>
+<li>For the one sample testing problem, i.e., you have a sample of <span class="math inline">\(n\)</span> normal random variables, with unknown mean and variance and you want to test whether <span class="math inline">\(H_0\colon \mu=0\)</span> vs.&nbsp;<span class="math inline">\(H_0\colon \mu\neq 0\)</span>, show that <span class="math inline">\(\frac{\bar X}{\hat\sigma/\sqrt{n}}\sim t_{n-1}\)</span> under the null hypothesis, assuming the observations are normally distributed.</li>
+<li>What is the distribution of each of the following: <span class="math inline">\(\bar X,\hat\sigma^2\)</span> (sample mean and sample variance) under the assumption of normal data with unknown mean and variance?</li>
 </ul>
 <p>Compare and contrast the following concepts. That is, define them and explain the difference between them.</p>
 <ul>
