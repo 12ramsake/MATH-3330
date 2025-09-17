@@ -349,7 +349,7 @@ Note
 <p>Let <span class="math inline">\(X,X_1,X_2\)</span> be random variables.</p>
 <p>Recall the important quantities <span class="math inline">\(\mathrm{E}{X}\)</span>, <span class="math inline">\(\mathrm{var}{X}\)</span>, <span class="math inline">\(\mathrm{cov}(X_1,X_2)\)</span>, <span class="math inline">\(\mathrm{corr}(X_1,X_2)\)</span>. Recall expectation:</p>
 <div id="def-2" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2.2 </strong></span>The expectation of a random variable <span class="math inline">\(X\)</span> is <span class="math display">\[\mathrm{E}{X}=\sum_{x\in S}x\Pr\left(X=x\right),\]</span> if <span class="math inline">\(X\)</span> is discrete and is <span class="math display">\[\mathrm{E}{X}=\int_{-\infty}^\infty f(x)dx,\]</span> if <span class="math inline">\(X\)</span> is continuous.</p>
+<p><span class="theorem-title"><strong>Definition 2.2 </strong></span>The expectation of a random variable <span class="math inline">\(X\)</span> is <span class="math display">\[\mathrm{E}{X}=\sum_{x\in S}x\Pr\left(X=x\right),\]</span> if <span class="math inline">\(X\)</span> is discrete and is <span class="math display">\[\mathrm{E}{X}=\int_{-\infty}^\infty xf(x)dx,\]</span> if <span class="math inline">\(X\)</span> is continuous.</p>
 </div>
 <p>This is the ``average’’ value of the random variable. Note that it is possible for it to be impossible for <span class="math inline">\(X=\mathrm{E}{X}\)</span>. Try to come up with an example of this!</p>
 <div id="def-3" class="theorem definition">
@@ -390,7 +390,7 @@ Note
 <ul>
 <li><span class="math inline">\({\textrm{E}}\left[\sum_{i=1}^n a_i X_i\right]=\sum_{i=1}^n a_i{\textrm{E}}\left[ X_i\right]\)</span></li>
 <li><span class="math inline">\({\textrm{Var}}\left[\sum_{i=1}^n a_i X_i\right]=\sum_{i=1}^n a_i^2{\textrm{Var}}\left[ X_i\right]+\sum_{i\neq j}a_ia_j{\textrm{cov}}\left[X_i,X_j\right]\)</span></li>
-<li><span class="math inline">\({\textrm{Var}}\left[aX_1+bX_2+c\right]=a^2\mathrm{var}{X_1}+b^2{\textrm{Var}}\left[X_2\right]+2ab{\textrm{cov}}\left[X_1,X_2\right]\)</span></li>
+<li><span class="math inline">\({\textrm{Var}}\left[aX_1+bX_2+c\right]=a^2{\textrm{Var}}\left[X_1\right]+b^2{\textrm{Var}}\left[X_2\right]+2ab\ {\textrm{cov}}\left[X_1,X_2\right]\)</span></li>
 </ul>
 <div id="exr-5" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.5 </strong></span>What happens to <span class="math inline">\({\textrm{Var}}\left[aX_1+bX_2+c\right]\)</span> when <span class="math inline">\(\{X_i\}_{i=1}^n\)</span> are mutually independent?</p>
@@ -1045,8 +1045,7 @@ Y = \left( \begin{array}{c} Y_1 \\ \vdots \\ Y_n \end{array} \right)
 <ul>
 <li>Expected value and covariance matrix of <span class="math inline">\((X^\top X)^{-1}X^\top Y\)</span></li>
 <li>Expected value of <span class="math inline">\(Y^\top Y\)</span></li>
-<li>Expected value and covariance matrix of <span class="math inline">\(X^\top X\)</span></li>
-<li>Expected value and covariance matrix of <span class="math inline">\(X(X^\top X)^{-1}X^\top Y\)</span></li>
+<li>Expected value and covariance matrix of <span class="math inline">\(Z^\top Z\)</span> where <span class="math inline">\(Z\)</span> is a fixed, nonrandom vector of <span class="math inline">\(d\)</span> dimensions</li>
 </ul>
 </div>
 
