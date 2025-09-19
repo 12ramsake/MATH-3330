@@ -704,11 +704,11 @@ Caution
 </ol>
 <p>Goal: Compute <span class="math inline">\(\hat\beta\)</span> – Minimize <span class="math inline">\(g(\beta)=(Y-X\beta)^\top (Y-X\beta)\)</span>. (It may be useful to review taking derivatives with respect to vectors <a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf">here</a>.</p>
 <p>Step 1a: <span class="math display">\[\begin{align*}
-\frac{\partial g}{\partial\beta}&amp;= &amp;\frac{\partial g}{\partial\beta}(Y-X\beta)^\top (Y-X\beta)\\
-&amp;= &amp;\frac{\partial g}{\partial\beta}\left[Y^\top Y-2(X\beta)^\top Y+(X\beta)^\top X\beta\right] \tag{Transpose and distribute}\\
-&amp;= &amp;-2\frac{\partial g}{\partial\beta}\beta^\top X^\top Y+\frac{\partial g}{\partial\beta}\beta^\top X^\top X\beta \tag{$(AB)^\top=B^\top A^\top$}\\
-&amp;= &amp;-2 X^\top Y+2X^\top X\beta \tag{$\frac{\partial }{\partial x}x^\top Ax=2 Ax$ if $A$ symmetric, $\frac{\partial }{\partial x}x^\top a=a$ }\\
-&amp;= &amp;-2X^\top (Y-X\beta ).
+\frac{\partial g}{\partial\beta}&amp;= \frac{\partial }{\partial\beta}(Y-X\beta)^\top (Y-X\beta)\\
+&amp;= \frac{\partial }{\partial\beta}\left[Y^\top Y-2(X\beta)^\top Y+(X\beta)^\top X\beta\right] \tag{Transpose and distribute}\\
+&amp;= -2\frac{\partial }{\partial\beta}\beta^\top X^\top Y+\frac{\partial }{\partial\beta}\beta^\top X^\top X\beta \tag{$(AB)^\top=B^\top A^\top$}\\
+&amp;= -2 X^\top Y+2X^\top X\beta \tag{$\frac{\partial }{\partial x}x^\top Ax=2 Ax$ if $A$ symmetric, $\frac{\partial }{\partial x}x^\top a=a$ }\\
+&amp;= -2X^\top (Y-X\beta ).
 \end{align*}\]</span></p>
 <p>Step 1b: (Do this for homework) <span class="math display">\[\frac{\partial^2 g}{\partial\beta\partial\beta^\top}=2X^\top X.\]</span></p>
 <p>Step 2: We now need <span class="math inline">\(X^\top X\)</span> to be invertible, so we will assume that <span class="math inline">\(X\)</span> is full rank and <span class="math inline">\(n\geq p\)</span>. <span class="math display">\[\begin{align*}
