@@ -1759,18 +1759,48 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <p>Lasso regression (Least Absolute Shrinkage and Selection Operator) is a technique for linear models that adds a penalty term to the least squares loss function. <span class="math display">\[\hat{\beta}_{LASSO}=\mathop{\mathrm{argmin}}_\beta\left\lVert Y-X\beta\right\rVert^2+\lambda\left\lVert\beta\right\rVert_1\]</span> This penalty actually ``shrinks’’ some coefficients exactly to zero, effectively performing variable selection. Lasso is particularly useful when dealing with high-dimensional data where the number of predictors may exceed the number of observations. The parameter <span class="math inline">\(\lambda\)</span> is a tuning parameter, which controls the amount of shrinkage. It is typically chosen via cross validation. It is great for variable selection and prediction problems, but obtaining p-values and other inferential quantities is not so straightforward.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and run - I am doing this right now because the notes have a bug and rerunning this is annoying ... </span></span>
-<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(glmnet)</span></span>
-<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="co"># model=lm(Wins~., data = df)</span></span>
-<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="co"># X=model.matrix(model)</span></span>
-<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cv_model = cv.glmnet(X, df$Wins, alpha = 1,nfolds=5)</span></span>
-<span id="cb159-6"><a href="#cb159-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb159-7"><a href="#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="co"># best_lambda = cv_model$lambda.min</span></span>
-<span id="cb159-8"><a href="#cb159-8" aria-hidden="true" tabindex="-1"></a><span class="co"># best_lambda</span></span>
-<span id="cb159-9"><a href="#cb159-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb159-10"><a href="#cb159-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # plot of test MSE by lambda </span></span>
-<span id="cb159-11"><a href="#cb159-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(cv_model) </span></span>
-<span id="cb159-12"><a href="#cb159-12" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb159-13"><a href="#cb159-13" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(cv_model)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loaded glmnet 4.1-9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df)</span>
+<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
+<span id="cb162-3"><a href="#cb162-3" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, df<span class="sc">$</span>Wins, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
+<span id="cb162-4"><a href="#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-5"><a href="#cb162-5" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
+<span id="cb162-6"><a href="#cb162-6" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3257277</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>12 x 1 sparse Matrix of class "dgCMatrix"
+                      s0
+(Intercept)  7.984282372
+(Intercept)  .          
+RushY        .          
+PassY        0.002092933
+PuntA        .          
+FGP          .          
+TurnD        .          
+PenY         .          
+PerR         .          
+ORY         -0.002593297
+OPY          .          
+RushDiff     0.001594503</code></pre>
+</div>
 </div>
 </section>
 <section id="a-final-note" class="level2" data-number="9.6">
