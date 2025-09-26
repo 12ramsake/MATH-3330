@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math 3330: Regression Notes - 9&nbsp; Variable/Model Selection</title>
+<title>9&nbsp; Variable/Model Selection – Math 3330: Regression Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,13 +96,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -106,12 +141,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Unit_8.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Variable/Model Selection</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Unit_8.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Variable/Model Selection</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -121,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Math 3330: Regression Notes</a> 
@@ -208,9 +243,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -226,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -273,7 +308,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="variable-selection" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="variable-selection"><span class="header-section-number">9.1</span> Variable Selection</h2>
@@ -320,7 +357,7 @@ Note
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="coefficients-of-determination"><span class="header-section-number">9.2.1</span> Coefficients of determination</h3>
 <p>Recall that <span class="math display">\[R^2=\frac{SSModel}{SST}=1-\frac{SSE}{SST}.\]</span> We know that <span class="math inline">\(R^2\)</span> increases as <span class="math inline">\(p\)</span> increases, so we cannot choose the model with the largest <span class="math inline">\(R^2\)</span>. However, we could add variables one at a time until the marginal increase in <span class="math inline">\(R^2\)</span> is small.</p>
 <div id="exm-8-1-1" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.1 </strong></span>Recall example <a href="Unit_5.html#exm-6-4-1">Example&nbsp;<span>6.6</span></a>. Consider instead regressing the logged price per square foot onto the remaining variables. Investigate the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> curve through adding the regressors into the regression model one at a time.</p>
+<p><span class="theorem-title"><strong>Example 9.1</strong></span> Recall example <a href="Unit_5.html#exm-6-4-1" class="quarto-xref">Example&nbsp;<span>6.6</span></a>. Consider instead regressing the logged price per square foot onto the remaining variables. Investigate the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> curve through adding the regressors into the regression model one at a time.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df_clean2</span>
@@ -355,7 +392,11 @@ Note
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r2,<span class="at">type=</span><span class="st">'l'</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">ylab=</span><span class="st">"R2"</span>,<span class="at">xlab=</span><span class="st">"# variables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/R2-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/R2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>var_list[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -376,7 +417,11 @@ Note
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(r2,<span class="at">type=</span><span class="st">'l'</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">ylab=</span><span class="st">"R2"</span>,<span class="at">xlab=</span><span class="st">"# variables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>var_list[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -397,7 +442,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <p>Observe that if <span class="math inline">\(k = p\)</span> then <span class="math display">\[C_k = C_{p} = dfE_C - [n - 2p] = p = k.\]</span></p>
 <p>Let <span class="math inline">\(\operatorname{Bias}={\textrm{E}}\left[\hat Y_i\right]-{\textrm{E}}\left[Y_i\right]\)</span> where <span class="math inline">\(\hat Y_i\)</span> are generated from the reduced model. It can be shown that <span class="math display">\[E\left[C_k \mid \operatorname{Bias}=0\right]=k.\]</span> That is, if the regression model based on the subset of <span class="math inline">\(k-1\)</span> predictors is unbiased, (that is, the model’s average predictions match the true values), then we expect <span class="math inline">\(C_k\)</span> to be roughly <span class="math inline">\(k\)</span>. In addition, if there is bias, then <span class="math inline">\(E[C_k ]&gt;k\)</span>. <strong>Therefore, it is suggested that from all possible models, we choose the model with <span class="math inline">\(C_k\)</span> close to <span class="math inline">\(k\)</span> and <span class="math inline">\(C_k \leq k\)</span>.</strong> Sometimes this is a little bit subjective: For example, the smallest <span class="math inline">\(C_k\)</span> is <span class="math inline">\(C_4 = 4.1\)</span> and the next smallest is <span class="math inline">\(C_5 = 4.7\)</span>. <span class="math inline">\(C_4\)</span> is smallest but <span class="math inline">\(C_4&gt;4\)</span> – the model may be biased. Now, <span class="math inline">\(C_5\)</span> is the second smallest, <span class="math inline">\(C_5&lt;5\)</span> implies the model is likely not biased.</p>
 <div id="exm-8-1-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.2 </strong></span>Recall example <a href="Unit_5.html#exm-6-4-1">Example&nbsp;<span>6.6</span></a>. Investigate the Mallows <span class="math inline">\(C_k\)</span> of the models considered in <a href="#exm-8-1-1">Example&nbsp;<span>9.9</span></a>. In addition, compare the <code>model_1</code> and <code>model_2</code> below, using <code>full_model</code> as the complete model.</p>
+<p><span class="theorem-title"><strong>Example 9.2</strong></span> Recall example <a href="Unit_5.html#exm-6-4-1" class="quarto-xref">Example&nbsp;<span>6.6</span></a>. Investigate the Mallows <span class="math inline">\(C_k\)</span> of the models considered in <a href="#exm-8-1-1" class="quarto-xref">Example&nbsp;<span>9.9</span></a>. In addition, compare the <code>model_1</code> and <code>model_2</code> below, using <code>full_model</code> as the complete model.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mallows C</span></span>
@@ -445,7 +490,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <p>If every potential model has a high value for Mallows <span class="math inline">\(C_k\)</span>, this is an indication that some important predictor variables are likely missing from each model. Therefore, we may wish to revaluate the real estate model.</p>
 <div id="exm-8-2-1" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.3 </strong></span>Use the NFL data from the textbook - Consider the following models provided below. Select the best model from <code>model</code>, <code>model_1</code> and <code>model_2</code> given below, using each of the coefficient of determination criteria and Mallows <span class="math inline">\(C_k\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 9.3</strong></span> Use the NFL data from the textbook - Consider the following models provided below. Select the best model from <code>model</code>, <code>model_1</code> and <code>model_2</code> given below, using each of the coefficient of determination criteria and Mallows <span class="math inline">\(C_k\)</span>.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>MPV<span class="sc">::</span>table.b1</span>
@@ -595,7 +640,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <li><span class="math inline">\(BIC\)</span> can be computed for other models, but should only be compared within model classes</li>
 </ul>
 <div id="exm-8-2-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.4 </strong></span>Recall example <a href="Unit_5.html#exm-6-4-1">Example&nbsp;<span>6.6</span></a>. Investigate the AIC and BIC of the models considered in <a href="#exm-8-1-1">Example&nbsp;<span>9.9</span></a>. In addition, compare the <code>model_1</code>, <code>model_2</code> and the <code>full_model</code> using AIC and BIC.</p>
+<p><span class="theorem-title"><strong>Example 9.4</strong></span> Recall example <a href="Unit_5.html#exm-6-4-1" class="quarto-xref">Example&nbsp;<span>6.6</span></a>. Investigate the AIC and BIC of the models considered in <a href="#exm-8-1-1" class="quarto-xref">Example&nbsp;<span>9.9</span></a>. In addition, compare the <code>model_1</code>, <code>model_2</code> and the <code>full_model</code> using AIC and BIC.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mallows C</span></span>
@@ -700,7 +745,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <p>We would select <code>full_model</code> as the final model, since it has the lowest values of both AIC and BIC.</p>
 <div id="exm-8-3-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.5 </strong></span>Use the NFL data from the textbook - Consider the following models provided below. Select the best model from <code>model</code>, <code>model_1</code> and <code>model_2</code> given below, using each of AIC and BIC.</p>
+<p><span class="theorem-title"><strong>Example 9.5</strong></span> Use the NFL data from the textbook - Consider the following models provided below. Select the best model from <code>model</code>, <code>model_1</code> and <code>model_2</code> given below, using each of AIC and BIC.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushDiff,<span class="at">data=</span>df)</span>
@@ -762,7 +807,11 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
 <span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data,<span class="at">pch=</span><span class="dv">22</span>,<span class="at">bg=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># complexity of the model </span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>complexity<span class="ot">=</span><span class="dv">9</span></span>
@@ -801,7 +850,11 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Linear vs. Polynomial Regression (Degree 9)"</span>,</span>
 <span id="cb101-10"><a href="#cb101-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate new data from the same process</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">500</span></span>
@@ -829,7 +882,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <p>Above, we fit two models to the data. One that allows for polynomial functions of degree at most 9 (not just linear functions), and one that only allows linear functions. It is clear that the polynomial model has a lower error on the data set at hand. However, when we generate new data from the same process, the polynomial model has a much higher error. This is an example of overfitting - the complex model does not generalize well beyond the current data set.</p>
 <div id="exm-8-3-3" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.6 </strong></span>Use the NFL data from the textbook - Perform all subsets regression with each of the comparison metrics described in the previous section.</p>
+<p><span class="theorem-title"><strong>Example 9.6</strong></span> Use the NFL data from the textbook - Perform all subsets regression with each of the comparison metrics described in the previous section.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('leaps')</span></span>
@@ -840,19 +893,35 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'r2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'adjr2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'Cp'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'bic'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The <code>leaps</code> package allows us to do all subsets regression. We see that (with the exception of the <span class="math inline">\(R\)</span>-squared) the best model under all criterion contains passing yards, rushing yard differential, and opponent passing yards.</p>
@@ -876,19 +945,35 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'r2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/allsubsets housing-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/allsubsets housing-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'adjr2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/allsubsets housing-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/allsubsets housing-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'Cp'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/allsubsets housing-3.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/allsubsets housing-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'bic'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/allsubsets housing-4.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/allsubsets housing-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The selected models appear fairly sparse!</p>
@@ -901,7 +986,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <li>Choose <span class="math inline">\(\alpha_{entry}\)</span>, which is the significance level for a regressor to enter the model. Set the current model to be <span class="math inline">\(Y = \beta_0 + \epsilon\)</span>.</li>
 <li>Among all regressors <span class="math inline">\(X_i\)</span> not in the current model, test <span class="math inline">\(H_0: X_i\)</span> not entered versus <span class="math inline">\(H_a: X_i\)</span> entered.</li>
 <li>Choose the covariate with smallest <span class="math inline">\(p\)</span>-value, i.e.&nbsp;the most likely <span class="math inline">\(X_i\)</span> to be entered. Say the <span class="math inline">\(p\)</span>-value for testing <span class="math inline">\(H_0: \beta_1 =0\)</span> is the smallest.</li>
-<li>If the chosen <span class="math inline">\(p\)</span>-value is <span class="math inline">\(\geq \alpha_{entry}\)</span>, then <span class="math inline">\(X_1\)</span> is not entered, and the current model is chosen as the final model and the process terminates. Otherwise, <span class="math inline">\(X_1\)</span> is entered and the new current model is set to the current model, with the addition of <span class="math inline">\(X_1\)</span>.</li>
+<li>If the chosen <span class="math inline">\(p\)</span>-value is <span class="math inline">\(\geq  \alpha_{entry}\)</span>, then <span class="math inline">\(X_1\)</span> is not entered, and the current model is chosen as the final model and the process terminates. Otherwise, <span class="math inline">\(X_1\)</span> is entered and the new current model is set to the current model, with the addition of <span class="math inline">\(X_1\)</span>.</li>
 <li>Return to step 2.</li>
 </ol>
 <!-- - Now $X_1$ is in the model, then among all the models with 2 explanatory -->
@@ -919,10 +1004,10 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <!-- \beta_2 X_2 + \epsilon$ and continue to the next step -->
 <p>Note that once an explanatory variable is entered, it will never leave the model.</p>
 <div id="exm-8-4-1" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.7 </strong></span>Suppose that we have 3 explanatory variables and <span class="math inline">\(\alpha_{entry}\)</span> is chosen to be 0.05. The following is how we would proceed.</p>
+<p><span class="theorem-title"><strong>Example 9.7</strong></span> Suppose that we have 3 explanatory variables and <span class="math inline">\(\alpha_{entry}\)</span> is chosen to be 0.05. The following is how we would proceed.</p>
 </div>
 <p>Iteration 1:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Model</th>
@@ -950,7 +1035,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </table>
 <p>Since 0.00033 is the smallest <span class="math inline">\(p\)</span>-value and it is less than <span class="math inline">\(\alpha_{entry}\)</span>, the chosen model is <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \epsilon\)</span>, and we continue to the next iteration.</p>
 <p>Iteration 2:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 68%">
 <col style="width: 18%">
@@ -978,7 +1063,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </table>
 <p>Since 0.01330 is the smallest <span class="math inline">\(p\)</span>-value and it is less than <span class="math inline">\(\alpha_{entry}\)</span>, the chosen model is <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon\)</span>, and we continue to the next iteration.</p>
 <p>Iteration 3:</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 71%">
 <col style="width: 17%">
@@ -1023,15 +1108,15 @@ Caution
 <li>Choose: <span class="math inline">\(\alpha_{stay}\)</span>, which is the significance level for an explanatory variable to <strong>stay</strong> in the model. Set the current model to be <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \ldots + \beta_{p-1} X_{p-1} + \epsilon\)</span>.</li>
 <li>Test <span class="math inline">\(H_0: X_i\)</span> eliminated versus <span class="math inline">\(H_a: X_i\)</span> not eliminated, i.e.&nbsp;<span class="math inline">\(H_0: \beta_i =0\)</span> versus <span class="math inline">\(H_a: \beta_i \ne 0\)</span> with respect to the current model.</li>
 <li>Choose the regressor with the largest <span class="math inline">\(p\)</span>-value – i.e., the most likely <span class="math inline">\(X_i\)</span> to be eliminated. Say <span class="math inline">\(p\)</span>-value for testing <span class="math inline">\(H_0: \beta_p =0\)</span> is the largest.</li>
-<li>If the chosen <span class="math inline">\(p\)</span>-value is <span class="math inline">\(&lt; \alpha_{stay}\)</span>, then <span class="math inline">\(X_p\)</span> is not eliminated, and the chosen model is the current model and the process terminates. Otherwise, <span class="math inline">\(X_p\)</span> is eliminated and the current model is set to be the old current model, with <span class="math inline">\(X_p\)</span> removed.</li>
+<li>If the chosen <span class="math inline">\(p\)</span>-value is <span class="math inline">\(&lt;  \alpha_{stay}\)</span>, then <span class="math inline">\(X_p\)</span> is not eliminated, and the chosen model is the current model and the process terminates. Otherwise, <span class="math inline">\(X_p\)</span> is eliminated and the current model is set to be the old current model, with <span class="math inline">\(X_p\)</span> removed.</li>
 <li>If there are no regressors in the current model, terminate. Otherwise, go back to step 2.</li>
 </ol>
 <div id="exm-8-4-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.8 </strong></span>Suppose that we have 3 explanatory variables and <span class="math inline">\(\alpha_{stay}\)</span> is chosen to be 0.05. The following is how we would proceed.</p>
+<p><span class="theorem-title"><strong>Example 9.8</strong></span> Suppose that we have 3 explanatory variables and <span class="math inline">\(\alpha_{stay}\)</span> is chosen to be 0.05. The following is how we would proceed.</p>
 </div>
 <p>The current model is <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \epsilon\)</span>.</p>
 <p>Iteration 1:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th><span class="math inline">\(H_a:\)</span></th>
@@ -1056,7 +1141,7 @@ Caution
 <p>Since 0.36145 is the largest <span class="math inline">\(p\)</span>-value and it is greater than <span class="math inline">\(\alpha_{stay}\)</span>, the current model is set to be <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon\)</span>, and we continue to the next iteration.</p>
 <p>Iteration 2:</p>
 <p>Model is <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon\)</span>.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th><span class="math inline">\(H_a:\)</span></th>
@@ -1100,14 +1185,14 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>One way to avoid the infinite loop is to choose <span class="math inline">\(\alpha_{stay} \neq \alpha_{entry}\)</span>.</li>
-<li>Some books suggest “easy to enter” and “tough to eliminate” strategy for selecting <span class="math inline">\(\alpha_{stay}, \alpha_{entry}\)</span> but there is no strict rule.</li>
+<li>One way to avoid the infinite loop is to choose <span class="math inline">\(\alpha_{stay} \neq  \alpha_{entry}\)</span>.</li>
+<li>Some books suggest “easy to enter” and “tough to eliminate” strategy for selecting <span class="math inline">\(\alpha_{stay},  \alpha_{entry}\)</span> but there is no strict rule.</li>
 <li><code>R</code> is using the AIC criterion for entering and eliminating, rather than the <span class="math inline">\(F\)</span> test. This is also acceptable.</li>
 </ol>
 </div>
 </div>
 <div id="exm-8-1-1" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.9 </strong></span>Recall the real estate example - <a href="Unit_5.html#exm-6-4-1">Example&nbsp;<span>6.6</span></a>. Run forward selection, backward selection and stepwise regression using AIC as the criterion, including all regressors. (AIC is done automatically in R.)</p>
+<p><span class="theorem-title"><strong>Example 9.9</strong></span> Recall the real estate example - <a href="Unit_5.html#exm-6-4-1" class="quarto-xref">Example&nbsp;<span>6.6</span></a>. Run forward selection, backward selection and stepwise regression using AIC as the criterion, including all regressors. (AIC is done automatically in R.)</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ########### Automated methods ###########</span></span>
@@ -1243,7 +1328,7 @@ Note
 </div>
 <p>These methods retain many more variables. It is interesting, considering all subsets contained very few.</p>
 <div id="exm-8-3-4" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.10 </strong></span>Use the NFL data from the textbook - Run forward selection and backward selection including all regressors using the <span class="math inline">\(F\)</span> statistic criterion.</p>
+<p><span class="theorem-title"><strong>Example 9.10</strong></span> Use the NFL data from the textbook - Run forward selection and backward selection including all regressors using the <span class="math inline">\(F\)</span> statistic criterion.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="do">############ Forward selection by F value</span></span>
@@ -1463,7 +1548,7 @@ Note
 </div>
 </div>
 <div id="exr-8-3-4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.1 </strong></span>Use the NFL data from the textbook - modify the above code to perform stepwise regression, including all regressors using the <span class="math inline">\(F\)</span> statistic criterion.</p>
+<p><span class="theorem-title"><strong>Exercise 9.1</strong></span> Use the NFL data from the textbook - modify the above code to perform stepwise regression, including all regressors using the <span class="math inline">\(F\)</span> statistic criterion.</p>
 </div>
 </section>
 </section>
@@ -1483,7 +1568,7 @@ Note
 </ol>
 <p>To highlight the choice of <span class="math inline">\(k\)</span>, we say <span class="math inline">\(k\)</span>-fold Cross Validation – Each of the <span class="math inline">\(k\)</span> subsets are known as folds. What do we choose for <span class="math inline">\(k\)</span>? LOOCV (Leave One Out Cross Validation) is a popular technique. Here, <span class="math inline">\(k=n\)</span>. This is where each run, one observation is left out of the model. This gives a low bias, but high variation estimate of the prediction error. It also has a high run time. As a result, often, <span class="math inline">\(k\)</span> is taken to be 5 or 10. Taking lower values of <span class="math inline">\(k\)</span> gives a result similar to that of splitting the data into training and test sets, while higher values of <span class="math inline">\(k\)</span> gives a result similar to LOOCV. The choice of the number of folds in cross validation is a bias-variance tradeoff: too few folds may result in high bias, while too many folds may result in high variance. (This is why <span class="math inline">\(k\)</span> is taken between 1 and <span class="math inline">\(n\)</span>.)</p>
 <div id="exm-8-5-1" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.11 </strong></span>Using the real estate data, run cross validation in a forward selection manner. That is, run the cross validation procedure for the model with the first variable, the first and the second variable, the first three variables etc. Which model has the lowest error?</p>
+<p><span class="theorem-title"><strong>Example 9.11</strong></span> Using the real estate data, run cross validation in a forward selection manner. That is, run the cross validation procedure for the model with the first variable, the first and the second variable, the first three variables etc. Which model has the lowest error?</p>
 </div>
 <p>The <code>caret</code> package can be used to perform 5-fold CV.</p>
 <div class="cell">
@@ -1540,7 +1625,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We see that all of the variables minimize the prediction error. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="exm-8-5-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.12 </strong></span>Use the NFL data from the textbook. 1. Compare the model <code>Wins~.</code> to the model <code>Wins~PassY+PuntA+FGP+TurnD+PenY+OPY+RushDiff</code>. 2. Run cross validation in a forward selection manner. That is, run the cross validation procedure for the model with the first variable, the first and the second variable, the first three variables etc. Which model has the lowest error? 3. Run cross validation for all subsets. Which model has the lowest error? Does it match the result in step 2?</p>
+<p><span class="theorem-title"><strong>Example 9.12</strong></span> Use the NFL data from the textbook. 1. Compare the model <code>Wins~.</code> to the model <code>Wins~PassY+PuntA+FGP+TurnD+PenY+OPY+RushDiff</code>. 2. Run cross validation in a forward selection manner. That is, run the cross validation procedure for the model with the first variable, the first and the second variable, the first three variables etc. Which model has the lowest error? 3. Run cross validation for all subsets. Which model has the lowest error? Does it match the result in step 2?</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Cross Validation Regression ###########</span></span>
@@ -1635,7 +1720,11 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(RMSE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/CV-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/CV-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">=</span><span class="fu">which.min</span>(RMSE)</span>
 <span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a>cv[<span class="fu">which.min</span>(RMSE)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1669,47 +1758,19 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <h2 data-number="9.5" class="anchored" data-anchor-id="lasso-regression"><span class="header-section-number">9.5</span> LASSO Regression</h2>
 <p>Lasso regression (Least Absolute Shrinkage and Selection Operator) is a technique for linear models that adds a penalty term to the least squares loss function. <span class="math display">\[\hat{\beta}_{LASSO}=\mathop{\mathrm{argmin}}_\beta\left\lVert Y-X\beta\right\rVert^2+\lambda\left\lVert\beta\right\rVert_1\]</span> This penalty actually ``shrinks’’ some coefficients exactly to zero, effectively performing variable selection. Lasso is particularly useful when dealing with high-dimensional data where the number of predictors may exceed the number of observations. The parameter <span class="math inline">\(\lambda\)</span> is a tuning parameter, which controls the amount of shrinkage. It is typically chosen via cross validation. It is great for variable selection and prediction problems, but obtaining p-values and other inferential quantities is not so straightforward.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'glmnet' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: Matrix</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loaded glmnet 4.1-9</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df)</span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
-<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, df<span class="sc">$</span>Wins, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
-<span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-5"><a href="#cb163-5" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
-<span id="cb163-6"><a href="#cb163-6" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3257277</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda </span></span>
-<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Unit_8_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>12 x 1 sparse Matrix of class "dgCMatrix"
-                      s0
-(Intercept)  7.984282372
-(Intercept)  .          
-RushY        .          
-PassY        0.002092933
-PuntA        .          
-FGP          .          
-TurnD        .          
-PenY         .          
-PerR         .          
-ORY         -0.002593297
-OPY          .          
-RushDiff     0.001594503</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and run - I am doing this right now because the notes have a bug and rerunning this is annoying ... </span></span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(glmnet)</span></span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="co"># model=lm(Wins~., data = df)</span></span>
+<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="co"># X=model.matrix(model)</span></span>
+<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="co"># cv_model = cv.glmnet(X, df$Wins, alpha = 1,nfolds=5)</span></span>
+<span id="cb159-6"><a href="#cb159-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb159-7"><a href="#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="co"># best_lambda = cv_model$lambda.min</span></span>
+<span id="cb159-8"><a href="#cb159-8" aria-hidden="true" tabindex="-1"></a><span class="co"># best_lambda</span></span>
+<span id="cb159-9"><a href="#cb159-9" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb159-10"><a href="#cb159-10" aria-hidden="true" tabindex="-1"></a><span class="co"># # plot of test MSE by lambda </span></span>
+<span id="cb159-11"><a href="#cb159-11" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(cv_model) </span></span>
+<span id="cb159-12"><a href="#cb159-12" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb159-13"><a href="#cb159-13" aria-hidden="true" tabindex="-1"></a><span class="co"># coef(cv_model)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="a-final-note" class="level2" data-number="9.6">
@@ -1720,7 +1781,7 @@ RushDiff     0.001594503</code></pre>
 <h2 data-number="9.7" class="anchored" data-anchor-id="homework-questions"><span class="header-section-number">9.7</span> Homework questions</h2>
 <p>Complete the Chapter 10 questions from the textbook.</p>
 <div id="exr-8-6-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.2 </strong></span>Load car mileage data from <a href="Unit_2.html#exm-3-4-4">Example&nbsp;<span>3.8</span></a> and run <span class="math inline">\(10\)</span>-fold cross validation on all subset models. Which model is the best? Try LASSO regression. Try Forward and backaward selection.</p>
+<p><span class="theorem-title"><strong>Exercise 9.2</strong></span> Load car mileage data from <a href="Unit_2.html#exm-3-4-4" class="quarto-xref">Example&nbsp;<span>3.8</span></a> and run <span class="math inline">\(10\)</span>-fold cross validation on all subset models. Which model is the best? Try LASSO regression. Try Forward and backaward selection.</p>
 </div>
 
 
@@ -1762,18 +1823,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1805,11 +1855,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1819,8 +1908,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1832,7 +1930,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1876,6 +2097,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1901,6 +2123,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1962,17 +2210,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Unit_7.html" class="pagination-link">
+      <a href="./Unit_7.html" class="pagination-link" aria-label="Multicollinearity">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Multicollinearity</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Unit_9.html" class="pagination-link">
+      <a href="./Unit_9.html" class="pagination-link" aria-label="Robust Regression">
         <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Robust Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
