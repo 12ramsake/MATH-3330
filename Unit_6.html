@@ -405,7 +405,7 @@ F_u(x^\top u).
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>depths</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.276409011 0.255272074 0.500000000 0.973754328 0.973046927 0.338954415
-[7] 0.002672679</code></pre>
+[7] 0.001740398</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>depths<span class="sc">&lt;</span><span class="fl">0.015</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -647,7 +647,7 @@ F-statistic:  1468 on 45 and 24429 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>depths<span class="ot">=</span>ddalpha<span class="sc">::</span><span class="fu">depth.projection</span>(<span class="fu">cbind</span>(X,df<span class="sc">$</span>Sale_price),<span class="fu">cbind</span>(X,df<span class="sc">$</span>Sale_price))</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(depths<span class="sc">&lt;</span><span class="fl">0.1</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  2  4  5  7 13 15 16 17 26 28</code></pre>
+<pre><code> [1]  2  3  4  5  7 13 15 16 17 20</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(depths,F)[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -714,62 +714,62 @@ lm(formula = Sale_price ~ . - district_3 - district_4 - district_15 +
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--286389  -24319   -1024   23017  622228 
+-275030  -24260   -1069   23029  411038 
 
 Coefficients:
                              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)                -1.050e+06  3.600e+04 -29.174  &lt; 2e-16 ***
-District                    5.695e+03  7.426e+01  76.697  &lt; 2e-16 ***
-ExtwallBlock               -2.456e+03  3.563e+03  -0.689 0.490578    
-ExtwallBrick                6.616e+03  7.014e+02   9.432  &lt; 2e-16 ***
-ExtwallFiber-Cement         4.063e+04  3.624e+03  11.213  &lt; 2e-16 ***
-ExtwallFrame               -4.635e+03  9.450e+02  -4.905 9.40e-07 ***
-ExtwallMasonry / Frame      4.714e+03  1.659e+03   2.841 0.004498 ** 
-ExtwallPrem Wood            2.147e+04  5.434e+03   3.951 7.79e-05 ***
-ExtwallStone                1.000e+04  1.480e+03   6.754 1.47e-11 ***
-ExtwallStucco               3.856e+03  2.099e+03   1.837 0.066167 .  
-Stories1                   -1.501e+04  1.021e+04  -1.471 0.141235    
-Stories1.5                 -2.684e+03  1.019e+04  -0.263 0.792349    
-Stories2                    3.800e+01  1.016e+04   0.004 0.997016    
-Year_Built                  4.592e+02  1.559e+01  29.465  &lt; 2e-16 ***
-Fin_sqft                    5.880e+01  1.049e+00  56.051  &lt; 2e-16 ***
-Units1                      5.736e+04  7.139e+03   8.035 9.81e-16 ***
-Units2                     -8.034e+03  7.136e+03  -1.126 0.260229    
-Units3                     -4.356e+04  7.677e+03  -5.674 1.41e-08 ***
-Bdrms0                      8.955e+04  1.805e+04   4.961 7.06e-07 ***
-Bdrms1                      4.924e+04  1.015e+04   4.850 1.24e-06 ***
-Bdrms2                      5.519e+04  9.150e+03   6.032 1.65e-09 ***
-Bdrms3                      6.002e+04  9.100e+03   6.595 4.33e-11 ***
-Bdrms4                      5.136e+04  9.070e+03   5.662 1.51e-08 ***
-Bdrms5                      4.788e+04  9.070e+03   5.279 1.31e-07 ***
-Bdrms6                      3.315e+04  9.079e+03   3.651 0.000262 ***
-Bdrms7                      2.494e+03  9.639e+03   0.259 0.795810    
-Bdrms8                     -7.925e+03  1.014e+04  -0.782 0.434270    
-Fbath0                     -4.760e+04  1.489e+04  -3.197 0.001389 ** 
-Fbath1                     -3.579e+04  1.148e+04  -3.118 0.001826 ** 
-Fbath2                     -1.783e+04  1.144e+04  -1.558 0.119158    
-Fbath3                      5.081e+03  1.139e+04   0.446 0.655397    
-Fbath4                      2.820e+04  1.203e+04   2.344 0.019088 *  
-Lotsize                     1.586e+00  1.139e-01  13.923  &lt; 2e-16 ***
-Sale_date                   4.733e+00  2.514e-01  18.825  &lt; 2e-16 ***
-district_3TRUE              1.181e+06  1.398e+05   8.446  &lt; 2e-16 ***
-district_4TRUE              1.075e+06  2.414e+05   4.452 8.55e-06 ***
-district_15TRUE             4.501e+05  1.169e+05   3.849 0.000119 ***
-Year_Built:district_3TRUE  -6.544e+02  7.362e+01  -8.888  &lt; 2e-16 ***
-Lotsize:district_3TRUE      2.408e+01  9.920e-01  24.276  &lt; 2e-16 ***
-Lotsize:district_4TRUE     -2.998e+00  1.613e+00  -1.859 0.062977 .  
-Year_Built:district_4TRUE  -5.522e+02  1.260e+02  -4.383 1.18e-05 ***
-Year_Built:district_15TRUE -2.830e+02  6.073e+01  -4.659 3.19e-06 ***
-Lotsize:district_15TRUE     3.296e+00  1.170e+00   2.817 0.004845 ** 
-Fin_sqft:district_3TRUE     4.808e+01  1.725e+00  27.868  &lt; 2e-16 ***
-Fin_sqft:district_4TRUE    -1.976e+01  4.121e+00  -4.794 1.65e-06 ***
-Fin_sqft:district_15TRUE   -1.345e+01  3.057e+00  -4.401 1.08e-05 ***
+(Intercept)                -1.062e+06  3.577e+04 -29.689  &lt; 2e-16 ***
+District                    5.683e+03  7.309e+01  77.760  &lt; 2e-16 ***
+ExtwallBlock               -2.139e+03  3.506e+03  -0.610 0.541686    
+ExtwallBrick                6.923e+03  6.907e+02  10.024  &lt; 2e-16 ***
+ExtwallFiber-Cement         4.220e+04  3.577e+03  11.797  &lt; 2e-16 ***
+ExtwallFrame               -4.770e+03  9.303e+02  -5.128 2.96e-07 ***
+ExtwallMasonry / Frame      4.223e+03  1.636e+03   2.582 0.009828 ** 
+ExtwallPrem Wood            2.134e+04  5.348e+03   3.991 6.59e-05 ***
+ExtwallStone                1.034e+04  1.458e+03   7.092 1.36e-12 ***
+ExtwallStucco               5.659e+03  2.057e+03   2.751 0.005948 ** 
+Stories1                   -1.987e+04  1.027e+04  -1.934 0.053066 .  
+Stories1.5                 -6.665e+03  1.026e+04  -0.650 0.515852    
+Stories2                   -3.784e+03  1.023e+04  -0.370 0.711314    
+Year_Built                  4.521e+02  1.538e+01  29.398  &lt; 2e-16 ***
+Fin_sqft                    5.704e+01  1.038e+00  54.976  &lt; 2e-16 ***
+Units1                      5.644e+04  7.049e+03   8.006 1.24e-15 ***
+Units2                     -9.869e+03  7.045e+03  -1.401 0.161282    
+Units3                     -4.277e+04  7.578e+03  -5.644 1.68e-08 ***
+Bdrms0                      9.518e+04  1.773e+04   5.369 8.01e-08 ***
+Bdrms1                      5.351e+04  9.890e+03   5.410 6.35e-08 ***
+Bdrms2                      5.984e+04  8.891e+03   6.731 1.73e-11 ***
+Bdrms3                      6.531e+04  8.840e+03   7.388 1.54e-13 ***
+Bdrms4                      5.701e+04  8.809e+03   6.472 9.83e-11 ***
+Bdrms5                      5.396e+04  8.808e+03   6.126 9.14e-10 ***
+Bdrms6                      4.182e+04  8.810e+03   4.747 2.07e-06 ***
+Bdrms7                      1.719e+04  9.384e+03   1.832 0.066973 .  
+Bdrms8                      6.934e+03  9.886e+03   0.701 0.483047    
+Fbath0                     -1.844e+04  1.524e+04  -1.210 0.226294    
+Fbath1                     -7.378e+03  1.205e+04  -0.612 0.540357    
+Fbath2                      1.114e+04  1.202e+04   0.927 0.353926    
+Fbath3                      3.273e+04  1.197e+04   2.735 0.006250 ** 
+Fbath4                      4.163e+04  1.265e+04   3.292 0.000998 ***
+Lotsize                     1.669e+00  1.139e-01  14.653  &lt; 2e-16 ***
+Sale_date                   4.682e+00  2.475e-01  18.917  &lt; 2e-16 ***
+district_3TRUE              9.129e+05  1.355e+05   6.737 1.65e-11 ***
+district_4TRUE              1.058e+06  2.425e+05   4.365 1.28e-05 ***
+district_15TRUE             4.870e+05  1.167e+05   4.173 3.01e-05 ***
+Year_Built:district_3TRUE  -4.924e+02  7.127e+01  -6.908 5.03e-12 ***
+Lotsize:district_3TRUE      1.496e+01  8.517e-01  17.566  &lt; 2e-16 ***
+Lotsize:district_4TRUE     -9.878e-01  2.307e+00  -0.428 0.668598    
+Year_Built:district_4TRUE  -5.537e+02  1.271e+02  -4.356 1.33e-05 ***
+Year_Built:district_15TRUE -3.057e+02  6.079e+01  -5.029 4.97e-07 ***
+Lotsize:district_15TRUE     4.600e+00  1.240e+00   3.709 0.000208 ***
+Fin_sqft:district_3TRUE     4.606e+01  1.682e+00  27.383  &lt; 2e-16 ***
+Fin_sqft:district_4TRUE    -1.509e+01  4.811e+00  -3.136 0.001717 ** 
+Fin_sqft:district_15TRUE   -1.299e+01  3.012e+00  -4.312 1.62e-05 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 42300 on 24329 degrees of freedom
-Multiple R-squared:  0.6875,    Adjusted R-squared:  0.6869 
-F-statistic:  1189 on 45 and 24329 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 41620 on 24329 degrees of freedom
+Multiple R-squared:  0.6746,    Adjusted R-squared:  0.674 
+F-statistic:  1121 on 45 and 24329 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -843,52 +843,52 @@ F-statistic:  1468 on 45 and 24429 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice that some of the coefficients moved several standard errors!! This is a huge change - recall that outside 2 SE is outside the confidence interval. </span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">abs</span>(model3<span class="sc">$</span>coefficients<span class="sc">-</span>model2<span class="sc">$</span>coefficients)<span class="sc">/</span>s<span class="sc">$</span>coefficients[,<span class="dv">2</span>],T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Lotsize:district_3TRUE    Fin_sqft:district_3TRUE 
-              11.907011869               10.505647652 
-                    Fbath4                     Bdrms6 
-               3.272474830                3.121822138 
-                    Bdrms2                     Bdrms3 
-               3.073811551                3.065297912 
+<pre><code>   Fin_sqft:district_3TRUE                   Fin_sqft 
+               11.97605245                 3.31639566 
+    Lotsize:district_3TRUE                     Bdrms2 
+                3.15994935                 2.64035516 
+                    Bdrms1                     Bdrms3 
+                2.57156818                 2.55739988 
                     Bdrms4                     Bdrms5 
-               3.053054837                2.997710777 
-                    Bdrms1                     Bdrms7 
-               2.924818907                2.295911942 
-                    Fbath1                     Fbath2 
-               2.202715251                2.195388192 
-               (Intercept)                     Fbath3 
-               2.185379266                2.131228958 
-                    Bdrms8  Year_Built:district_3TRUE 
-               2.007413612                1.961873758 
+                2.50157649                 2.39726109 
+                    Bdrms6                    Lotsize 
+                2.23266080                 2.19756713 
+                    Fbath4                   Stories1 
+                2.05158670                 1.97035162 
+                Stories1.5                (Intercept) 
+                1.93341261                 1.87240899 
+                  Stories2     Lotsize:district_4TRUE 
+                1.78952063                 1.21723628 
+   Lotsize:district_15TRUE                     Bdrms0 
+                1.17739379                 1.14446105 
+   Fin_sqft:district_4TRUE        ExtwallFiber-Cement 
+                1.12329496                 1.04407021 
+             ExtwallStucco               ExtwallStone 
+                1.04255877                 0.87854123 
+                    Bdrms7                 Year_Built 
+                0.79208704                 0.70504462 
+                 Sale_date                     Bdrms8 
+                0.63434805                 0.55499651 
+              ExtwallBlock   Fin_sqft:district_15TRUE 
+                0.51482838                 0.45620086 
+          ExtwallPrem Wood Year_Built:district_15TRUE 
+                0.44975422                 0.37580752 
+           district_15TRUE                     Fbath2 
+                0.33901662                 0.32042867 
+    ExtwallMasonry / Frame               ExtwallBrick 
+                0.28873525                 0.28772014 
+                    Fbath3                     Fbath1 
+                0.28254847                 0.25918539 
+                    Units3  Year_Built:district_3TRUE 
+                0.25090184                 0.24682136 
+              ExtwallFrame                     Units1 
+                0.23214386                 0.19080464 
+                  District             district_4TRUE 
+                0.15694852                 0.12256690 
                     Fbath0             district_3TRUE 
-               1.896747037                1.874481158 
-                  Fin_sqft                 Stories1.5 
-               1.597728016                1.554975694 
-                  Stories1                    Lotsize 
-               1.507350276                1.470031701 
-                    Bdrms0                   Stories2 
-               1.436011840                1.424763571 
-              ExtwallStone   Fin_sqft:district_15TRUE 
-               1.096983395                0.601682125 
-       ExtwallFiber-Cement     ExtwallMasonry / Frame 
-               0.596914907                0.580260730 
-    Lotsize:district_4TRUE           ExtwallPrem Wood 
-               0.494998726                0.465916152 
-                 Sale_date               ExtwallBlock 
-               0.419059366                0.417735932 
-              ExtwallFrame                     Units3 
-               0.371235702                0.350744467 
-                    Units2                 Year_Built 
-               0.243852175                0.236576158 
-   Fin_sqft:district_4TRUE              ExtwallStucco 
-               0.178338460                0.162923747 
-              ExtwallBrick    Lotsize:district_15TRUE 
-               0.155348249                0.133453813 
-                    Units1             district_4TRUE 
-               0.059255072                0.054538411 
- Year_Built:district_4TRUE            district_15TRUE 
-               0.029191749                0.022184542 
-                  District Year_Built:district_15TRUE 
-               0.010431244                0.001655683 </code></pre>
+                0.06035946                 0.04448568 
+ Year_Built:district_4TRUE                     Units2 
+                0.01715649                 0.01349622 </code></pre>
 </div>
 </div>
 <p>How should we treat influential observations? The easiest course of action is removal. If there are many influential observations, then you might want to try robust model fitting methods, which automatically account for outliers and influential observations.</p>
