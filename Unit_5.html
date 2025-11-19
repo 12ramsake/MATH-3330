@@ -811,11 +811,45 @@ Multiple R-squared:  0.5931,    Adjusted R-squared:  0.5925
 F-statistic:  1156 on 31 and 24590 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Observe that the interaction term between year built and District 14 is -723.1$. In addition, note that year built has a positive coefficient of 785$. We can interpret the interaction effect as follows: Holding finished square feet and lot size constant, a one year increase in year built for a home in District 14 results in an increase in price that is <span class="math inline">\(723.1\)</span> lower than that of District 1. We can also reword this to make it a little more clear - Holding finished square feet and lot size constant, a one year increase in year built for a home in District 1 results in an increase in price that is <span class="math inline">\(723.1\)</span> higher than that of District 1.</p>
+<p>Observe that the interaction term between year built and District 14 is -723.1$. In addition, note that year built has a positive coefficient of 785$. We can interpret the interaction effect as follows: Holding finished square feet and lot size constant, a one year increase in year built for a home in District 14 results in an increase in price that is <span class="math inline">\(723.1\)</span> lower than that of District 1. We can also reword this to make it a little more clear - Holding finished square feet and lot size constant, a one year increase in year built for a home in District 1 results in an increase in price that is <span class="math inline">\(723.1\)</span> higher than that of District 14.</p>
 <p>To see this observe that for a one unit increase in year built in District 14, we have that the price goes up by 785.0-723.1=61.9 on average, holding other variables constant. On the other hand, in District 1, the price goes up by 785.0 on average, holding other variables constant. Therefore, in general, newer homes are much more valuable in District 1.</p>
 <div id="exr-6-2-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 6.1</strong></span> Interpret the main effects and the interaction effect with year built for Districts 2-4. (The main effects are the coefficients for Districts 2-4.)</p>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Including interaction effects changes the interpretation of the main effects. When a variable is involved in an interaction term, its main effect no longer represents its overall marginal association with the response. Instead, the main effect must be interpreted at the level where the interacting variable is equal to 0 (i.e., at the reference or baseline value used in the model).</p>
+</div>
+</div>
+<p><strong>Note:</strong> Including interaction effects changes how we interpret the main effects.<br>
+When a variable is involved in an interaction term, its main effect no longer represents its overall marginal association with the response. Instead, the main effect is interpreted <strong>at the level where the interacting variable equals 0</strong> (the baseline level used in the model).</p>
+<hr>
+<p>Suppose we fit the model</p>
+<p><span class="math display">\[
+\text{ExamScore} = \beta_0 + \beta_1 \text{StudyHours} + \beta_2 \text{ProgramStats} +
+\beta_3(\text{StudyHours} \times \text{ProgramStats}) + \varepsilon,
+\]</span></p>
+<p>where <code>ProgramStats = 1</code> for Stats students and <code>0</code> for the baseline group (Math students).</p>
+<p>This model includes an interaction between <strong>StudyHours</strong> and <strong>Program</strong>.</p>
+<ul>
+<li><p><strong>Interpretation of <span class="math inline">\(\beta_1\)</span></strong> (main effect of StudyHours):<br>
+<span class="math inline">\(\beta_1\)</span> is <em>not</em> the overall effect of increasing StudyHours.<br>
+It is the effect <strong>only for Math students</strong>, because Math is coded as 0 for <code>ProgramStats</code>.<br>
+In other words, <span class="math inline">\(\beta_1\)</span> is the slope of StudyHours <strong>when ProgramStats = 0</strong>.</p></li>
+<li><p><strong>Interpretation of <span class="math inline">\(\beta_2\)</span></strong> (main effect of ProgramStats):<br>
+<span class="math inline">\(\beta_2\)</span> is <em>not</em> the overall difference between Stats and Math students.<br>
+It compares Stats vs.&nbsp;Math <strong>when StudyHours = 0</strong>, because the interaction term equals 0 at StudyHours = 0.</p></li>
+</ul>
+<hr>
+<p>This example shows that once an interaction is included, the main effects must be interpreted <strong>at the point where the other interacting variable is 0</strong>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
