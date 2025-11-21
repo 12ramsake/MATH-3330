@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -94,7 +94,7 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -180,9 +180,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Math 3330: Regression Notes</a> 
     </div>
@@ -432,53 +430,53 @@ lm(formula = Sale_price ~ . + District * Year_Built + District *
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--537486  -27391     623   26702  331623 
+-571898  -27403     650   26733  331109 
 
 Coefficients:
                          Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)             3.751e+05  7.647e+04   4.905 9.40e-07 ***
-District               -9.891e+04  7.329e+03 -13.494  &lt; 2e-16 ***
-ExtwallBlock           -2.850e+03  4.313e+03  -0.661  0.50874    
-ExtwallBrick            7.371e+03  8.474e+02   8.698  &lt; 2e-16 ***
-ExtwallFiber-Cement     3.626e+04  4.380e+03   8.279  &lt; 2e-16 ***
-ExtwallFrame           -4.776e+03  1.142e+03  -4.181 2.92e-05 ***
-ExtwallMasonry / Frame  3.754e+03  2.005e+03   1.872  0.06122 .  
-ExtwallPrem Wood        1.338e+04  6.621e+03   2.020  0.04336 *  
-ExtwallStone            4.628e+03  1.791e+03   2.584  0.00978 ** 
-ExtwallStucco           1.369e+04  2.525e+03   5.420 6.01e-08 ***
-Stories1                1.559e+04  1.203e+04   1.296  0.19510    
-Stories1.5              2.766e+04  1.201e+04   2.303  0.02129 *  
-Stories2                3.486e+04  1.196e+04   2.915  0.00356 ** 
-Year_Built             -3.760e+02  3.759e+01 -10.002  &lt; 2e-16 ***
-Fin_sqft                1.127e+02  1.579e+00  71.357  &lt; 2e-16 ***
-Units1                  9.916e+04  8.587e+03  11.547  &lt; 2e-16 ***
-Units2                  2.223e+04  8.586e+03   2.588  0.00965 ** 
-Units3                 -1.599e+04  9.247e+03  -1.729  0.08380 .  
-Bdrms0                  1.292e+05  2.168e+04   5.958 2.59e-09 ***
-Bdrms1                  1.038e+05  1.196e+04   8.681  &lt; 2e-16 ***
-Bdrms2                  1.103e+05  1.072e+04  10.298  &lt; 2e-16 ***
-Bdrms3                  1.134e+05  1.065e+04  10.654  &lt; 2e-16 ***
-Bdrms4                  1.020e+05  1.060e+04   9.618  &lt; 2e-16 ***
-Bdrms5                  1.004e+05  1.060e+04   9.470  &lt; 2e-16 ***
-Bdrms6                  8.147e+04  1.062e+04   7.673 1.74e-14 ***
-Bdrms7                  5.935e+04  1.133e+04   5.237 1.65e-07 ***
-Bdrms8                  6.592e+04  1.193e+04   5.524 3.34e-08 ***
-Fbath0                 -1.633e+04  1.799e+04  -0.907  0.36422    
-Fbath1                 -3.789e+03  1.392e+04  -0.272  0.78543    
-Fbath2                  1.662e+04  1.386e+04   1.199  0.23046    
-Fbath3                  5.174e+04  1.381e+04   3.746  0.00018 ***
-Fbath4                  5.798e+04  1.469e+04   3.948 7.91e-05 ***
-Lotsize                 5.227e-01  3.043e-01   1.718  0.08588 .  
-Sale_date               4.712e+00  3.044e-01  15.476  &lt; 2e-16 ***
-District:Year_Built     5.549e+01  3.785e+00  14.659  &lt; 2e-16 ***
-District:Lotsize        1.319e-01  3.315e-02   3.980 6.91e-05 ***
-District:Fin_sqft      -4.891e+00  1.411e-01 -34.676  &lt; 2e-16 ***
+(Intercept)             3.911e+05  7.662e+04   5.105 3.34e-07 ***
+District               -9.833e+04  7.370e+03 -13.342  &lt; 2e-16 ***
+ExtwallBlock           -2.883e+03  4.332e+03  -0.666 0.505735    
+ExtwallBrick            7.283e+03  8.510e+02   8.558  &lt; 2e-16 ***
+ExtwallFiber-Cement     3.453e+04  4.384e+03   7.876 3.53e-15 ***
+ExtwallFrame           -4.832e+03  1.147e+03  -4.211 2.55e-05 ***
+ExtwallMasonry / Frame  3.622e+03  2.015e+03   1.797 0.072297 .  
+ExtwallPrem Wood        1.255e+04  6.648e+03   1.888 0.059073 .  
+ExtwallStone            4.324e+03  1.800e+03   2.403 0.016282 *  
+ExtwallStucco           1.421e+04  2.529e+03   5.619 1.94e-08 ***
+Stories1                2.144e+04  1.206e+04   1.777 0.075606 .  
+Stories1.5              3.330e+04  1.204e+04   2.765 0.005695 ** 
+Stories2                4.038e+04  1.199e+04   3.367 0.000762 ***
+Year_Built             -3.752e+02  3.775e+01  -9.941  &lt; 2e-16 ***
+Fin_sqft                1.149e+02  1.573e+00  73.025  &lt; 2e-16 ***
+Units1                  1.011e+05  8.619e+03  11.735  &lt; 2e-16 ***
+Units2                  2.366e+04  8.618e+03   2.746 0.006046 ** 
+Units3                 -1.500e+04  9.280e+03  -1.616 0.106007    
+Bdrms0                  1.295e+05  2.171e+04   5.967 2.45e-09 ***
+Bdrms1                  1.044e+05  1.188e+04   8.786  &lt; 2e-16 ***
+Bdrms2                  1.109e+05  1.062e+04  10.442  &lt; 2e-16 ***
+Bdrms3                  1.137e+05  1.055e+04  10.783  &lt; 2e-16 ***
+Bdrms4                  1.021e+05  1.050e+04   9.719  &lt; 2e-16 ***
+Bdrms5                  1.008e+05  1.050e+04   9.599  &lt; 2e-16 ***
+Bdrms6                  8.156e+04  1.051e+04   7.758 8.95e-15 ***
+Bdrms7                  5.771e+04  1.122e+04   5.143 2.73e-07 ***
+Bdrms8                  6.762e+04  1.183e+04   5.717 1.10e-08 ***
+Fbath0                 -4.480e+04  1.727e+04  -2.594 0.009495 ** 
+Fbath1                 -3.206e+04  1.293e+04  -2.480 0.013140 *  
+Fbath2                 -1.181e+04  1.287e+04  -0.918 0.358758    
+Fbath3                  2.425e+04  1.281e+04   1.893 0.058308 .  
+Fbath4                  3.291e+04  1.373e+04   2.397 0.016528 *  
+Lotsize                 5.003e-01  3.053e-01   1.639 0.101294    
+Sale_date               4.708e+00  3.058e-01  15.398  &lt; 2e-16 ***
+District:Year_Built     5.528e+01  3.807e+00  14.521  &lt; 2e-16 ***
+District:Lotsize        1.352e-01  3.368e-02   4.016 5.94e-05 ***
+District:Fin_sqft      -5.024e+00  1.413e-01 -35.551  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 51220 on 24338 degrees of freedom
-Multiple R-squared:  0.4899,    Adjusted R-squared:  0.4892 
-F-statistic: 649.4 on 36 and 24338 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 51440 on 24338 degrees of freedom
+Multiple R-squared:  0.4997,    Adjusted R-squared:  0.499 
+F-statistic: 675.3 on 36 and 24338 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlations </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model3)</span>
@@ -506,16 +504,16 @@ F-statistic: 649.4 on 36 and 24338 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   GVIF Df GVIF^(1/(2*Df))                Interacts With
-District       5.714326  7        1.132580 Year_Built, Lotsize, Fin_sqft
-Extwall        1.406324  8        1.021540                          --  
-Stories        2.844855  3        1.190356                          --  
-Year_Built    25.938400  3        1.720510                      District
-Fin_sqft   38894.063947  3        5.820772                      District
-Units          3.312795  3        1.220953                          --  
-Bdrms          4.191282  9        1.082866                          --  
-Fbath          3.179850  5        1.122640                          --  
-Lotsize    12029.531110  3        4.786758                      District
-Sale_date      1.018318  1        1.009117                          --  
+District       5.811916  7        1.133951 Year_Built, Lotsize, Fin_sqft
+Extwall        1.407457  8        1.021591                          --  
+Stories        2.836165  3        1.189749                          --  
+Year_Built    26.235511  3        1.723779                      District
+Fin_sqft   39657.066805  3        5.839649                      District
+Units          3.310772  3        1.220829                          --  
+Bdrms          4.249691  9        1.083699                          --  
+Fbath          3.268665  5        1.125737                          --  
+Lotsize    12110.195617  3        4.792093                      District
+Sale_date      1.018359  1        1.009138                          --  
                                                                              Other Predictors
 District                                     Extwall, Stories, Units, Bdrms, Fbath, Sale_date
 Extwall      District, Stories, Year_Built, Fin_sqft, Units, Bdrms, Fbath, Lotsize, Sale_date
@@ -537,15 +535,15 @@ Sale_date      District, Extwall, Stories, Year_Built, Fin_sqft, Units, Bdrms, F
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   GVIF Df GVIF^(1/(2*Df))       Interacts With
-Extwall        1.391943  8        1.020884                 --  
-Stories        2.799219  3        1.187152                 --  
-Year_Built    10.367240  3        1.476649             District
-Fin_sqft   30301.584811  3        5.583556             District
-Units          3.274509  3        1.218590                 --  
-Bdrms          4.148134  9        1.082244                 --  
-Fbath          3.178093  5        1.122578                 --  
-Sale_date      1.018189  1        1.009053                 --  
-District       5.334770  5        1.182256 Year_Built, Fin_sqft
+Extwall        1.394146  8        1.020985                 --  
+Stories        2.791076  3        1.186575                 --  
+Year_Built    10.348955  3        1.476214             District
+Fin_sqft   30827.592664  3        5.599595             District
+Units          3.272197  3        1.218447                 --  
+Bdrms          4.206429  9        1.083083                 --  
+Fbath          3.266057  5        1.125647                 --  
+Sale_date      1.018250  1        1.009084                 --  
+District       5.428108  5        1.184309 Year_Built, Fin_sqft
                                                                     Other Predictors
 Extwall      Stories, Year_Built, Fin_sqft, Units, Bdrms, Fbath, Sale_date, District
 Stories      Extwall, Year_Built, Fin_sqft, Units, Bdrms, Fbath, Sale_date, District
@@ -568,15 +566,15 @@ District                            Extwall, Stories, Units, Bdrms, Fbath, Sale_
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  GVIF Df GVIF^(1/(2*Df))      Interacts With
-Extwall       1.276927  8        1.015396                --  
-Stories       2.158025  3        1.136779                --  
-Year_Built   11.174297  3        1.495214            District
-Lotsize    9860.233154  3        4.630713            District
-Units         3.235413  3        1.216153                --  
-Bdrms         3.116787  9        1.065193                --  
-Fbath         2.642111  5        1.102034                --  
-Sale_date     1.017830  1        1.008876                --  
-District      1.364676  5        1.031580 Year_Built, Lotsize
+Extwall       1.278076  8        1.015453                --  
+Stories       2.154274  3        1.136450                --  
+Year_Built   11.391230  3        1.500013            District
+Lotsize    9918.654579  3        4.635275            District
+Units         3.230517  3        1.215846                --  
+Bdrms         3.158257  9        1.065975                --  
+Fbath         2.680673  5        1.103632                --  
+Sale_date     1.017886  1        1.008903                --  
+District      1.371045  5        1.032061 Year_Built, Lotsize
                                                                    Other Predictors
 Extwall      Stories, Year_Built, Lotsize, Units, Bdrms, Fbath, Sale_date, District
 Stories      Extwall, Year_Built, Lotsize, Units, Bdrms, Fbath, Sale_date, District
@@ -598,14 +596,14 @@ District                           Extwall, Stories, Units, Bdrms, Fbath, Sale_d
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              GVIF Df GVIF^(1/(2*Df)) Interacts With
-Extwall   1.194837  8        1.011188           --  
-Stories   2.068903  3        1.128817           --  
-Lotsize   1.104089  3        1.016640       District
-Units     3.212635  3        1.214722           --  
-Bdrms     3.032776  9        1.063577           --  
-Fbath     2.627137  5        1.101408           --  
-Sale_date 1.017619  1        1.008771           --  
-District  1.104089  3        1.016640        Lotsize
+Extwall   1.196051  8        1.011252           --  
+Stories   2.064761  3        1.128440           --  
+Lotsize   1.106724  3        1.017044       District
+Units     3.207860  3        1.214421           --  
+Bdrms     3.072868  9        1.064353           --  
+Fbath     2.662075  5        1.102864           --  
+Sale_date 1.017655  1        1.008789           --  
+District  1.106724  3        1.017044        Lotsize
                                                       Other Predictors
 Extwall     Stories, Lotsize, Units, Bdrms, Fbath, Sale_date, District
 Stories     Extwall, Lotsize, Units, Bdrms, Fbath, Sale_date, District
@@ -660,7 +658,7 @@ District              Extwall, Stories, Units, Bdrms, Fbath, Sale_date</code></p
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Condition number </span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(A<span class="sc">$</span>values)<span class="sc">/</span><span class="fu">min</span>(A<span class="sc">$</span>values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 23010799</code></pre>
+<pre><code>[1] 20504900</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(A<span class="sc">$</span>vectors)<span class="ot">=</span><span class="fu">names</span>(model4<span class="sc">$</span>coefficients)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -669,92 +667,92 @@ District              Extwall, Stories, Units, Bdrms, Fbath, Sale_date</code></p
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>A<span class="sc">$</span>vectors[,<span class="fu">which.min</span>(A<span class="sc">$</span>values)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           (Intercept)           ExtwallBlock           ExtwallBrick 
-          0.000000e+00          -1.180351e-04          -5.037153e-04 
+          0.000000e+00          -1.808337e-04          -5.986735e-04 
    ExtwallFiber-Cement           ExtwallFrame ExtwallMasonry / Frame 
-         -8.006278e-04           3.718910e-04          -9.517260e-05 
+         -7.750834e-04           5.691236e-04           2.527176e-05 
       ExtwallPrem Wood           ExtwallStone          ExtwallStucco 
-         -4.010191e-05          -2.268456e-04           1.620858e-04 
+         -4.580287e-05          -2.298247e-04           9.981574e-05 
               Stories1             Stories1.5               Stories2 
-          1.496292e-01           1.072495e-01           1.291660e-01 
+          1.346482e-01           9.625435e-02           1.162378e-01 
             Year_Built                Lotsize                 Units1 
-          8.853387e-04          -1.327091e-03          -3.383242e-02 
+          9.408657e-04          -1.308864e-03          -5.044458e-02 
                 Units2                 Units3                 Bdrms0 
-         -3.199530e-02          -6.431336e-03           7.638819e-03 
+         -4.754917e-02          -9.215312e-03           1.134364e-02 
                 Bdrms1                 Bdrms2                 Bdrms3 
-          2.703996e-02           1.507964e-01           2.224065e-01 
+          4.018239e-02           2.240350e-01           3.304862e-01 
                 Bdrms4                 Bdrms5                 Bdrms6 
-          1.880355e-01           9.967568e-02           9.451476e-02 
+          2.794698e-01           1.484263e-01           1.409131e-01 
                 Bdrms7                 Bdrms8                 Fbath0 
-          2.714935e-02           2.106535e-02          -3.788933e-02 
+          4.117124e-02           3.256222e-02          -3.420901e-02 
                 Fbath1                 Fbath2                 Fbath3 
-         -6.220211e-01          -6.094181e-01          -2.314788e-01 
+         -5.628390e-01          -5.512671e-01          -2.095564e-01 
                 Fbath4              Sale_date               District 
-         -7.411137e-02           1.367944e-04           2.688220e-04 </code></pre>
+         -6.730582e-02           2.473430e-04           2.683572e-04 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round(A$vectors[,which.min(A$values)],1)</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(A<span class="sc">$</span>vectors[,<span class="fu">which.min</span>(A<span class="sc">$</span>values)][<span class="fu">abs</span>(<span class="fu">round</span>(A<span class="sc">$</span>vectors[,<span class="fu">which.min</span>(A<span class="sc">$</span>values)],<span class="dv">1</span>))<span class="sc">&gt;</span><span class="dv">0</span>],<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Stories1 Stories1.5   Stories2     Bdrms2     Bdrms3     Bdrms4     Bdrms5 
-       0.1        0.1        0.1        0.2        0.2        0.2        0.1 
-    Bdrms6     Fbath1     Fbath2     Fbath3     Fbath4 
-       0.1       -0.6       -0.6       -0.2       -0.1 </code></pre>
+<pre><code>  Stories1 Stories1.5   Stories2     Units1     Bdrms2     Bdrms3     Bdrms4 
+       0.1        0.1        0.1       -0.1        0.2        0.3        0.3 
+    Bdrms5     Bdrms6     Fbath1     Fbath2     Fbath3     Fbath4 
+       0.1        0.1       -0.6       -0.6       -0.2       -0.1 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>min_4<span class="ot">=</span><span class="fu">order</span>(A<span class="sc">$</span>values)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>A<span class="sc">$</span>vectors[,min_4]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                [,1]          [,2]          [,3]          [,4]
-(Intercept)             0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00
-ExtwallBlock           -1.180351e-04 -1.688039e-04 -2.931481e-04 -1.666678e-03
-ExtwallBrick           -5.037153e-04 -1.847847e-04  7.552116e-04 -7.141976e-04
-ExtwallFiber-Cement    -8.006278e-04 -5.023081e-04  5.606275e-04 -3.570924e-06
-ExtwallFrame            3.718910e-04  3.018080e-04  7.573736e-04 -4.405445e-03
-ExtwallMasonry / Frame -9.517260e-05  5.788470e-04  6.223179e-04  1.062479e-03
-ExtwallPrem Wood       -4.010191e-05  3.702798e-07 -1.294559e-04 -1.735995e-05
-ExtwallStone           -2.268456e-04 -2.109121e-04  1.231521e-04 -3.898523e-04
-ExtwallStucco           1.620858e-04 -7.703912e-04  5.436619e-05 -1.583058e-03
-Stories1                1.496292e-01 -5.233787e-01  3.805295e-01  2.336554e-03
-Stories1.5              1.072495e-01 -3.781709e-01  2.745467e-01  1.054379e-03
-Stories2                1.291660e-01 -4.514708e-01  3.293563e-01 -2.518303e-03
-Year_Built              8.853387e-04 -2.085749e-04 -1.056785e-03  2.622938e-03
-Lotsize                -1.327091e-03  5.791673e-04  1.080261e-03 -6.797669e-04
-Units1                 -3.383242e-02 -5.648447e-02 -6.396803e-02 -6.982260e-01
-Units2                 -3.199530e-02 -5.428328e-02 -6.133553e-02 -6.830513e-01
-Units3                 -6.431336e-03 -1.072072e-02 -1.064184e-02 -1.710918e-01
-Bdrms0                  7.638819e-03  1.292834e-02  1.477574e-02 -1.160860e-02
-Bdrms1                  2.703996e-02  4.586381e-02  5.237996e-02 -1.166205e-02
-Bdrms2                  1.507964e-01  2.552677e-01  2.922333e-01 -5.348667e-02
-Bdrms3                  2.224065e-01  3.767730e-01  4.309816e-01 -7.857708e-02
-Bdrms4                  1.880355e-01  3.191439e-01  3.647618e-01 -6.666807e-02
-Bdrms5                  9.967568e-02  1.699779e-01  1.939176e-01 -3.502669e-02
-Bdrms6                  9.451476e-02  1.625792e-01  1.853990e-01 -3.366567e-02
-Bdrms7                  2.714935e-02  4.997264e-02  5.837442e-02 -1.518276e-02
-Bdrms8                  2.106535e-02  3.848635e-02  4.568571e-02 -1.338976e-02
-Fbath0                 -3.788933e-02  2.293331e-03  1.794354e-02  2.950431e-03
-Fbath1                 -6.220211e-01  3.417581e-02  2.895022e-01 -7.263378e-04
-Fbath2                 -6.094181e-01  3.286499e-02  2.845510e-01  2.089982e-03
-Fbath3                 -2.314788e-01  1.303794e-02  1.113559e-01  9.601716e-04
-Fbath4                 -7.411137e-02  3.434733e-03  3.522774e-02 -3.873695e-03
-Sale_date               1.367944e-04  7.861143e-04 -3.364359e-04  7.174912e-03
-District                2.688220e-04 -3.920737e-04 -4.092707e-04  8.041434e-04</code></pre>
+(Intercept)             0.000000e+00  0.000000e+00  0.0000000000  0.000000e+00
+ExtwallBlock           -1.808337e-04  1.165238e-04  0.0002935389 -1.666353e-03
+ExtwallBrick           -5.986735e-04  2.007543e-04 -0.0009396952 -7.010930e-04
+ExtwallFiber-Cement    -7.750834e-04  4.806688e-04 -0.0006205005 -9.218340e-06
+ExtwallFrame            5.691236e-04 -1.297423e-04 -0.0006410956 -4.398732e-03
+ExtwallMasonry / Frame  2.527176e-05 -6.436600e-04 -0.0010256240  9.986159e-04
+ExtwallPrem Wood       -4.580287e-05 -1.667736e-05  0.0001352641 -1.673973e-05
+ExtwallStone           -2.298247e-04  2.038642e-04 -0.0001217805 -3.874044e-04
+ExtwallStucco           9.981574e-05  7.927837e-04  0.0001135514 -1.557177e-03
+Stories1                1.346482e-01  5.833657e-01 -0.2874306742  2.219254e-03
+Stories1.5              9.625435e-02  4.212654e-01 -0.2074703555  9.676366e-04
+Stories2                1.162378e-01  5.034874e-01 -0.2492950583 -2.614857e-03
+Year_Built              9.408657e-04  2.902194e-04  0.0015669185  2.630983e-03
+Lotsize                -1.308864e-03 -6.838878e-04 -0.0016578010 -6.899261e-04
+Units1                 -5.044458e-02  4.381857e-02  0.0650310594 -6.980111e-01
+Units2                 -4.754917e-02  4.228620e-02  0.0628251258 -6.827926e-01
+Units3                 -9.215312e-03  8.609436e-03  0.0111385402 -1.714139e-01
+Bdrms0                  1.134364e-02 -9.871682e-03 -0.0147124377 -1.165239e-02
+Bdrms1                  4.018239e-02 -3.505875e-02 -0.0522303307 -1.181900e-02
+Bdrms2                  2.240350e-01 -1.950322e-01 -0.2914048547 -5.436401e-02
+Bdrms3                  3.304862e-01 -2.879215e-01 -0.4297602984 -7.987014e-02
+Bdrms4                  2.794698e-01 -2.439531e-01 -0.3638084623 -6.776206e-02
+Bdrms5                  1.484263e-01 -1.301744e-01 -0.1937291390 -3.562659e-02
+Bdrms6                  1.409131e-01 -1.246528e-01 -0.1855536169 -3.425755e-02
+Bdrms7                  4.117124e-02 -3.852765e-02 -0.0593196193 -1.538533e-02
+Bdrms8                  3.256222e-02 -2.957500e-02 -0.0460944762 -1.355972e-02
+Fbath0                 -3.420901e-02 -4.009982e-03 -0.0239981764  2.911463e-03
+Fbath1                 -5.628390e-01 -6.307747e-02 -0.3885532436 -1.356014e-03
+Fbath2                 -5.512671e-01 -6.106575e-02 -0.3814528248  1.470423e-03
+Fbath3                 -2.095564e-01 -2.337318e-02 -0.1486331875  7.337965e-04
+Fbath4                 -6.730582e-02 -6.816442e-03 -0.0471058146 -3.902191e-03
+Sale_date               2.473430e-04 -7.936509e-04  0.0003107389  7.180484e-03
+District                2.683572e-04  4.039766e-04  0.0006216098  7.899576e-04</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round(A$vectors[,which.min(A$values)],1)</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> min_4)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">round</span>(A<span class="sc">$</span>vectors[,i][<span class="fu">abs</span>(<span class="fu">round</span>(A<span class="sc">$</span>vectors[,i],<span class="dv">1</span>))<span class="sc">&gt;</span><span class="dv">0</span>],<span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Stories1 Stories1.5   Stories2     Bdrms2     Bdrms3     Bdrms4     Bdrms5 
-       0.1        0.1        0.1        0.2        0.2        0.2        0.1 
-    Bdrms6     Fbath1     Fbath2     Fbath3     Fbath4 
-       0.1       -0.6       -0.6       -0.2       -0.1 
-  Stories1 Stories1.5   Stories2     Units1     Units2     Bdrms2     Bdrms3 
-      -0.5       -0.4       -0.5       -0.1       -0.1        0.3        0.4 
-    Bdrms4     Bdrms5     Bdrms6 
-       0.3        0.2        0.2 
+<pre><code>  Stories1 Stories1.5   Stories2     Units1     Bdrms2     Bdrms3     Bdrms4 
+       0.1        0.1        0.1       -0.1        0.2        0.3        0.3 
+    Bdrms5     Bdrms6     Fbath1     Fbath2     Fbath3     Fbath4 
+       0.1        0.1       -0.6       -0.6       -0.2       -0.1 
+  Stories1 Stories1.5   Stories2     Bdrms2     Bdrms3     Bdrms4     Bdrms5 
+       0.6        0.4        0.5       -0.2       -0.3       -0.2       -0.1 
+    Bdrms6     Fbath1     Fbath2 
+      -0.1       -0.1       -0.1 
   Stories1 Stories1.5   Stories2     Units1     Units2     Bdrms1     Bdrms2 
-       0.4        0.3        0.3       -0.1       -0.1        0.1        0.3 
+      -0.3       -0.2       -0.2        0.1        0.1       -0.1       -0.3 
     Bdrms3     Bdrms4     Bdrms5     Bdrms6     Bdrms7     Fbath1     Fbath2 
-       0.4        0.4        0.2        0.2        0.1        0.3        0.3 
+      -0.4       -0.4       -0.2       -0.2       -0.1       -0.4       -0.4 
     Fbath3 
-       0.1 
+      -0.1 
 Units1 Units2 Units3 Bdrms2 Bdrms3 Bdrms4 
   -0.7   -0.7   -0.2   -0.1   -0.1   -0.1 </code></pre>
 </div>
@@ -794,7 +792,7 @@ Units1 Units2 Units3 Bdrms2 Bdrms3 Bdrms4
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Condition number </span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(A<span class="sc">$</span>values)<span class="sc">/</span><span class="fu">min</span>(A<span class="sc">$</span>values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15008411</code></pre>
+<pre><code>[1] 14467899</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(A<span class="sc">$</span>vectors)<span class="ot">=</span><span class="fu">names</span>(model5<span class="sc">$</span>coefficients)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -803,27 +801,27 @@ Units1 Units2 Units3 Bdrms2 Bdrms3 Bdrms4
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>A<span class="sc">$</span>vectors[,<span class="fu">which.min</span>(A<span class="sc">$</span>values)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           (Intercept)           ExtwallBlock           ExtwallBrick 
-          0.000000e+00           4.197154e-05          -4.836637e-04 
+          0.000000e+00          -4.329003e-05           4.896303e-04 
    ExtwallFiber-Cement           ExtwallFrame ExtwallMasonry / Frame 
-         -9.397501e-05          -1.491845e-03          -1.068593e-03 
+          1.020427e-04           1.467577e-03           1.356432e-03 
       ExtwallPrem Wood           ExtwallStone          ExtwallStucco 
-          2.613361e-05           9.908803e-05           1.499714e-04 
+         -3.077050e-05          -1.050499e-04          -1.645397e-04 
             Year_Built                Lotsize                 Bdrms0 
-          1.324720e-03          -7.969251e-04          -2.238454e-02 
+         -1.507799e-03           9.549637e-04           2.238027e-02 
                 Bdrms1                 Bdrms2                 Bdrms3 
-         -7.538416e-02          -4.187992e-01          -6.179593e-01 
+          7.536512e-02           4.187270e-01           6.178417e-01 
                 Bdrms4                 Bdrms5                 Bdrms6 
-         -5.241834e-01          -2.801821e-01          -2.678399e-01 
+          5.240461e-01           2.803854e-01           2.680699e-01 
                 Bdrms7                 Bdrms8              Sale_date 
-         -8.463924e-02          -6.611335e-02           3.864523e-04 
+          8.496594e-02           6.655480e-02          -4.101966e-04 
               District 
-          5.475367e-04 </code></pre>
+         -6.001324e-04 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round(A$vectors[,which.min(A$values)],1)</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(A<span class="sc">$</span>vectors[,<span class="fu">which.min</span>(A<span class="sc">$</span>values)][<span class="fu">abs</span>(<span class="fu">round</span>(A<span class="sc">$</span>vectors[,<span class="fu">which.min</span>(A<span class="sc">$</span>values)],<span class="dv">1</span>))<span class="sc">&gt;</span><span class="dv">0</span>],<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bdrms1 Bdrms2 Bdrms3 Bdrms4 Bdrms5 Bdrms6 Bdrms7 Bdrms8 
-  -0.1   -0.4   -0.6   -0.5   -0.3   -0.3   -0.1   -0.1 </code></pre>
+   0.1    0.4    0.6    0.5    0.3    0.3    0.1    0.1 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is fine</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1138,8 +1136,8 @@ C2  1156.766284  1       34.011267           --    t, H, C, t2, H2</code></pre>
  1.27597850  5.41457162  4.53564335  1.42338989 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># observe that</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(RushY<span class="sc">~</span>.,<span class="at">data=</span>df[,<span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>s<span class="ot">=</span><span class="fu">summary</span>(model)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>model2<span class="ot">=</span><span class="fu">lm</span>(RushY<span class="sc">~</span>.,<span class="at">data=</span>df[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>s<span class="ot">=</span><span class="fu">summary</span>(model2)</span>
 <span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">-</span>s<span class="sc">$</span>r.squared)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.827645</code></pre>
@@ -1148,12 +1146,12 @@ C2  1156.766284  1       34.011267           --    t, H, C, t2, H2</code></pre>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 28  9</code></pre>
+<pre><code>[1] 28 10</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#standardizing</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>X2<span class="ot">=</span><span class="fu">apply</span>(X,<span class="dv">2</span>,<span class="cf">function</span>(x){(x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))}); <span class="fu">dim</span>(X2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 28  9</code></pre>
+<pre><code>[1] 28 10</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>X2[,<span class="dv">1</span>]<span class="ot">=</span>X[,<span class="dv">1</span>]</span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span>X2</span>
@@ -1164,61 +1162,64 @@ C2  1156.766284  1       34.011267           --    t, H, C, t2, H2</code></pre>
 <span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>condition_number<span class="ot">=</span><span class="fu">max</span>(xev)<span class="sc">/</span><span class="fu">min</span>(xev)</span>
 <span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a>condition_number</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 215.646</code></pre>
+<pre><code>[1] 233.7211</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(xev)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.1298424  0.3552922  0.5328487  0.6867363  0.8232325  1.2191453  1.6977743
-[8]  2.5551283 28.0000000</code></pre>
+<pre><code> [1]  0.1198009  0.1304874  0.4141227  0.5381718  0.7373652  0.8232571
+ [7]  1.3144026  1.6989984  3.2233940 28.0000000</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co">#index of minimum eigenvalue</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>minn<span class="ot">=</span><span class="fu">which.min</span>(xev)</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>ev<span class="sc">$</span>vectors[,minn]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.675215e-16 -2.109094e-01  2.615778e-01 -4.250523e-02  1.442042e-01
-[6] -4.744502e-02 -6.475229e-01 -6.423531e-01  1.741790e-01</code></pre>
+<pre><code> [1]  6.411542e-17  7.011800e-01 -4.340761e-02 -2.023407e-01 -1.758354e-01
+ [6]  8.685752e-02  5.157060e-02 -6.211992e-01  1.784152e-01 -8.172072e-02</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(ev<span class="sc">$</span>vectors)<span class="ot">=</span><span class="fu">names</span>(model<span class="sc">$</span>coefficients)</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>ev<span class="sc">$</span>vectors</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     [,1]          [,2]          [,3]          [,4]
-(Intercept)  1.000000e+00 -3.434947e-17  5.656001e-17 -1.332883e-16
-PassY       -1.931673e-17  8.040232e-02  4.548137e-01  4.590825e-01
-PuntA        1.733313e-16  2.847481e-02 -5.282204e-01  5.050070e-01
-FGP          6.643674e-18 -1.498563e-02  6.360469e-01  4.652414e-02
-TurnD        1.358771e-18 -4.436052e-01  9.254740e-02  4.700157e-01
-PenY        -4.747269e-17 -3.638914e-01 -1.751243e-01 -1.469074e-01
-PerR        -4.843659e-17 -5.401530e-01 -1.437332e-01  1.847958e-01
-ORY         -9.496374e-17  5.364518e-01 -2.217080e-01  1.153371e-01
-OPY          1.353659e-16  2.893988e-01  2.291129e-02  4.920345e-01
+(Intercept)  1.000000e+00  3.518928e-17 -5.957417e-17  1.278524e-16
+RushY       -4.202100e-17  4.860110e-01  2.451343e-02 -2.455854e-01
+PassY       -1.925274e-17 -5.329696e-02 -4.452387e-01 -4.271630e-01
+PuntA        1.730021e-16  3.402877e-02  5.385783e-01 -4.700037e-01
+FGP          6.535596e-18  1.901803e-02 -6.336115e-01 -8.166060e-02
+TurnD        3.688423e-19  4.092389e-01 -1.005237e-01 -3.161027e-01
+PenY        -4.790976e-17  2.794600e-01  1.564396e-01  2.830480e-01
+PerR        -4.979902e-17  5.088988e-01  1.310716e-01 -7.932060e-02
+ORY         -9.388117e-17 -4.644587e-01  2.405543e-01 -2.073852e-01
+OPY          1.355701e-16 -1.978859e-01 -2.649024e-03 -5.480057e-01
                      [,5]          [,6]          [,7]          [,8]
-(Intercept)  1.753269e-17  4.497241e-17 -8.295922e-18 -9.898359e-17
-PassY        3.414787e-01  5.912719e-01  2.410126e-01  8.451722e-02
-PuntA        2.835269e-01  3.495064e-02 -3.785463e-01  4.145009e-01
-FGP         -1.687798e-01 -2.417375e-01 -6.140270e-01  3.567854e-01
-TurnD       -9.900605e-03 -1.291665e-01 -2.199263e-01 -6.984198e-01
-PenY        -5.210958e-01  6.822653e-01 -2.680418e-01  6.487362e-02
-PerR        -4.221330e-02 -3.015818e-01  2.274534e-01  2.994520e-01
-ORY         -9.681973e-02  2.538335e-02 -3.566234e-01 -3.161428e-01
-OPY         -7.012299e-01 -1.302810e-01  3.499387e-01  1.101525e-01
-                     [,9]
-(Intercept) -1.675215e-16
-PassY       -2.109094e-01
-PuntA        2.615778e-01
-FGP         -4.250523e-02
-TurnD        1.442042e-01
-PenY        -4.744502e-02
-PerR        -6.475229e-01
-ORY         -6.423531e-01
-OPY          1.741790e-01</code></pre>
+(Intercept)  1.782040e-17 -2.201849e-17 -1.424289e-18 -4.578376e-17
+RushY        6.132520e-03  2.463905e-01  9.603526e-02  3.317999e-01
+PassY        3.347492e-01 -5.954589e-01  2.990445e-01  1.261423e-01
+PuntA        2.806944e-01 -1.156065e-01 -3.606368e-01  3.469809e-01
+FGP         -1.667771e-01  2.190348e-01 -6.039025e-01  3.465457e-01
+TurnD       -1.494452e-02 -1.216896e-01 -3.373137e-01 -7.555812e-01
+PenY        -5.278556e-01 -6.731568e-01 -1.866976e-01  2.100622e-01
+PerR        -4.210781e-02  2.029121e-01  1.700649e-01  2.906163e-02
+ORY         -9.651613e-02 -1.380667e-02 -3.481051e-01 -1.326596e-01
+OPY         -7.009694e-01  1.186045e-01  3.284156e-01 -5.920606e-03
+                     [,9]         [,10]
+(Intercept) -1.895581e-16  6.411542e-17
+RushY       -1.765417e-01  7.011800e-01
+PassY       -2.064018e-01 -4.340761e-02
+PuntA        3.229883e-01 -2.023407e-01
+FGP          2.303085e-03 -1.758354e-01
+TurnD        1.234429e-01  8.685752e-02
+PenY        -6.244479e-02  5.157060e-02
+PerR        -5.088703e-01 -6.211992e-01
+ORY         -7.094290e-01  1.784152e-01
+OPY          2.013172e-01 -8.172072e-02</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(model$coefficients)[abs(round(ev$vectors[,minn],1))&gt;0]</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ev<span class="sc">$</span>vectors[,minn],<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)       PassY       PuntA         FGP       TurnD        PenY 
-        0.0        -0.2         0.3         0.0         0.1         0.0 
-       PerR         ORY         OPY 
-       -0.6        -0.6         0.2 </code></pre>
+<pre><code>(Intercept)       RushY       PassY       PuntA         FGP       TurnD 
+        0.0         0.7         0.0        -0.2        -0.2         0.1 
+       PenY        PerR         ORY         OPY 
+        0.1        -0.6         0.2        -0.1 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What should we do?</span></span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
