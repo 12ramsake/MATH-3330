@@ -403,7 +403,7 @@ F_u(x^\top u).
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>depths</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.276409011 0.255272074 0.500000000 0.973754328 0.973046927 0.338954415
-[7] 0.001980581</code></pre>
+[7] 0.003074312</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>depths<span class="sc">&lt;</span><span class="fl">0.015</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -632,7 +632,7 @@ F-statistic:  1507 on 16 and 23020 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>depths<span class="ot">=</span>ddalpha<span class="sc">::</span><span class="fu">depth.projection</span>(df_mat,df_mat)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(depths<span class="sc">&lt;</span><span class="fl">0.1</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]   4 324 555 599 629 691 694 705 780 889</code></pre>
+<pre><code> [1]   4 178 324 555 599 629 691 694 705 780</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(depths,F)[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -663,7 +663,7 @@ F-statistic:  1507 on 16 and 23020 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>depths<span class="ot">=</span>ddalpha<span class="sc">::</span><span class="fu">depth.projection</span>(<span class="fu">cbind</span>(X,df5<span class="sc">$</span>Sale_price),<span class="fu">cbind</span>(X,df5<span class="sc">$</span>Sale_price))</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(depths<span class="sc">&lt;</span><span class="fl">0.1</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]    4  178 1063 1330 1460 2035 2262 3238 4095 5713</code></pre>
+<pre><code> [1]    1    4  178 1063 1330 1460 2035 3238 4095 4576</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(depths,F)[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">

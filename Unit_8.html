@@ -370,8 +370,7 @@ Note
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df[df[<span class="st">'Sale_price'</span>]<span class="sc">&gt;</span><span class="dv">10000</span>,]</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df[df[<span class="st">'Fin_sqft'</span>]<span class="sc">&gt;</span><span class="dv">500</span>,]</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>District<span class="ot">=</span><span class="fu">as.factor</span>(df<span class="sc">$</span>District)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>District<span class="ot">=</span><span class="fu">as.factor</span>(df<span class="sc">$</span>District)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">=</span>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">=</span>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>var_list<span class="ot">=</span><span class="fu">c</span>(<span class="st">'District'</span> ,  <span class="st">'Extwall'</span> ,<span class="st">'Stories'</span>,<span class="st">'Year_Built'</span>,<span class="st">'Units'</span>,<span class="st">'LLS'</span>,<span class="st">'Bdrms'</span>,<span class="st">'Fbath'</span>,<span class="st">'Sale_date'</span>)</span>
@@ -537,17 +536,16 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(df)</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>RushDiff<span class="ot">=</span>(df<span class="sc">$</span>RushY<span class="sc">-</span>df<span class="sc">$</span>ORY)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushDiff,<span class="at">data=</span>df)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>model_1<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span> TurnD<span class="sc">+</span>PenY<span class="sc">+</span>PerR<span class="sc">+</span>ORY<span class="sc">+</span>OPY ,df)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>model_2<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span> TurnD<span class="sc">+</span>PenY<span class="sc">+</span>ORY<span class="sc">+</span>OPY,df)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushY,<span class="at">data=</span>df)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>model_1<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span> TurnD<span class="sc">+</span>PenY<span class="sc">+</span>PerR<span class="sc">+</span>ORY<span class="sc">+</span>OPY ,df)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>model_2<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span> TurnD<span class="sc">+</span>PenY<span class="sc">+</span>ORY<span class="sc">+</span>OPY,df)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  R2</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"m1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#  R2</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"m1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "m1"</code></pre>
 </div>
@@ -569,7 +567,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>r.squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7984089</code></pre>
+<pre><code>[1] 0.7468129</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ADJ R2</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"m1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -594,7 +592,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>adj.r.squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7278521</code></pre>
+<pre><code>[1] 0.6581974</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="do">##### Mallows C</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"m1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -603,7 +601,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">::</span><span class="fu">ols_mallows_cp</span>(model_1,model) <span class="co"># k=6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 25.187</code></pre>
+<pre><code>[1] 16.79365</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"m2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -611,7 +609,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">::</span><span class="fu">ols_mallows_cp</span>(model_2,model) <span class="co"># k=5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 23.23759</code></pre>
+<pre><code>[1] 14.83393</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"fm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -649,7 +647,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mallows C</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('olsrr')</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Recall the complete model</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We can consider</span></span>
 <span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>full_model<span class="ot">=</span><span class="fu">lm</span>(ppsq<span class="sc">~</span> District <span class="sc">+</span>  Extwall <span class="sc">+</span>     </span>
 <span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>            Stories  <span class="sc">+</span>    Year_Built  <span class="sc">+</span>   </span>
 <span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>            Units   <span class="sc">+</span>     Bdrms   <span class="sc">+</span>    </span>
@@ -751,14 +749,14 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <p><span class="theorem-title"><strong>Example 9.5</strong></span> Use the NFL data from the textbook - Consider the following models provided below. Select the best model from <code>model</code>, <code>model_1</code> and <code>model_2</code> given below, using each of AIC and BIC.</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushDiff,<span class="at">data=</span>df)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushY,<span class="at">data=</span>df)</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>model_1<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span> TurnD<span class="sc">+</span>PenY<span class="sc">+</span>PerR<span class="sc">+</span>ORY<span class="sc">+</span>OPY ,df)</span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>model_2<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span> TurnD<span class="sc">+</span>PenY<span class="sc">+</span>ORY<span class="sc">+</span>OPY,df)</span>
 <span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bic</span></span>
 <span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 133.4221</code></pre>
+<pre><code>[1] 139.803</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(model_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -771,7 +769,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aic</span></span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 121.4323</code></pre>
+<pre><code>[1] 127.8131</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(model_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -890,7 +888,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('leaps')</span></span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>all<span class="ot">=</span>leaps<span class="sc">::</span><span class="fu">regsubsets</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>RushDiff<span class="sc">+</span>ORY<span class="sc">+</span>OPY,<span class="at">data=</span>df,<span class="at">nvmax=</span><span class="dv">10</span>,<span class="at">method=</span><span class="st">'exhaustive'</span>)</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>all<span class="ot">=</span>leaps<span class="sc">::</span><span class="fu">regsubsets</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>RushY<span class="sc">+</span>ORY<span class="sc">+</span>OPY,<span class="at">data=</span>df,<span class="at">nvmax=</span><span class="dv">10</span>,<span class="at">method=</span><span class="st">'exhaustive'</span>)</span>
 <span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2^8</span></span>
 <span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -1628,7 +1626,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We see that all of the variables minimize the prediction error. </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="exm-8-5-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.12</strong></span> Use the NFL data from the textbook. 1. Compare the model <code>Wins~.</code> to the model <code>Wins~PassY+PuntA+FGP+TurnD+PenY+OPY+RushDiff</code>. 2. Run cross validation in a forward selection manner. That is, run the cross validation procedure for the model with the first variable, the first and the second variable, the first three variables etc. Which model has the lowest error? 3. Run cross validation for all subsets. Which model has the lowest error? Does it match the result in step 2?</p>
+<p><span class="theorem-title"><strong>Example 9.12</strong></span> Use the NFL data from the textbook. 1. Compare the model <code>Wins~.</code> to the model <code>Wins~PassY+PuntA+FGP+TurnD+PenY+OPY+RushY</code>. 2. Run cross validation in a forward selection manner. That is, run the cross validation procedure for the model with the first variable, the first and the second variable, the first three variables etc. Which model has the lowest error? 3. Run cross validation for all subsets. Which model has the lowest error? Does it match the result in step 2?</p>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Cross Validation Regression ###########</span></span>
@@ -1645,7 +1643,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <pre><code>Linear Regression 
 
 28 samples
-10 predictors
+ 9 predictor
 
 No pre-processing
 Resampling: Cross-Validated (5 fold) 
@@ -1657,7 +1655,7 @@ Resampling results:
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>model_cv_2 <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushDiff, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>model_cv_2 <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushY, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
 <span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>model_cv_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Regression 
@@ -1671,7 +1669,7 @@ Summary of sample sizes: 23, 21, 23, 23, 22
 Resampling results:
 
   RMSE      Rsquared   MAE     
-  2.418524  0.6516294  1.887159
+  2.666742  0.5425439  2.048828
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
@@ -1691,8 +1689,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 [1] "k=6 vars RushY PassY PuntA FGP TurnD PenY Wins CV Result 2.5"
 [1] "k=7 vars RushY PassY PuntA FGP TurnD PenY PerR Wins CV Result 2.5"
 [1] "k=8 vars RushY PassY PuntA FGP TurnD PenY PerR ORY Wins CV Result 2.5"
-[1] "k=9 vars RushY PassY PuntA FGP TurnD PenY PerR ORY OPY Wins CV Result 2"
-[1] "k=10 vars RushY PassY PuntA FGP TurnD PenY PerR ORY OPY RushDiff Wins CV Result 2.5"</code></pre>
+[1] "k=9 vars RushY PassY PuntA FGP TurnD PenY PerR ORY OPY Wins CV Result 2"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select model k=9 vars</span></span>
 <span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1702,7 +1699,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb149-7"><a href="#cb149-7" aria-hidden="true" tabindex="-1"></a>models<span class="ot">=</span><span class="fu">expand.grid</span>(l); <span class="fu">dim</span>(models)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1024   10</code></pre>
+<pre><code>[1] 512   9</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>cv<span class="ot">=</span>RMSE<span class="ot">=</span><span class="fu">c</span>()</span>
 <span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(models)){</span>
@@ -1718,8 +1715,8 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <span id="cb151-12"><a href="#cb151-12" aria-hidden="true" tabindex="-1"></a>bottom_10<span class="ot">=</span><span class="fu">order</span>(RMSE)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span>
 <span id="cb151-13"><a href="#cb151-13" aria-hidden="true" tabindex="-1"></a>RMSE[bottom_10]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1.514831 1.553680 1.561540 1.565194 1.604034 1.629024 1.634625 1.647743
- [9] 1.657872 1.658021</code></pre>
+<pre><code> [1] 1.602365 1.619883 1.639797 1.662903 1.699846 1.733090 1.737918 1.740185
+ [9] 1.749398 1.753767</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(RMSE))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -1736,24 +1733,24 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 Linear Regression 
 
 28 samples
- 5 predictor
+ 6 predictor
 
 No pre-processing
 Resampling: Cross-Validated (5 fold) 
-Summary of sample sizes: 22, 22, 23, 23, 22 
+Summary of sample sizes: 23, 22, 21, 22, 24 
 Resampling results:
 
   RMSE      Rsquared   MAE     
-  1.514831  0.7945392  1.255977
+  1.602365  0.7865483  1.300662
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,(<span class="dv">2</span><span class="sc">:</span>(p<span class="sc">+</span><span class="dv">1</span>))[<span class="fu">unlist</span>(models[m,])<span class="sc">==</span><span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  RushY PuntA PerR  OPY RushDiff
-1  2113  38.9 59.7 1917      -92</code></pre>
+<pre><code>  RushY PuntA PenY PerR  ORY  OPY
+1  2113  38.9  868 59.7 2205 1917</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span> PassY<span class="sc">+</span>PuntA<span class="sc">+</span>TurnD<span class="sc">+</span>PerR<span class="sc">+</span>OPY<span class="sc">+</span>RushDiff, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span> PassY<span class="sc">+</span>PuntA<span class="sc">+</span>TurnD<span class="sc">+</span>PerR<span class="sc">+</span>OPY<span class="sc">+</span>RushY, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
 <span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>RMSE<span class="ot">=</span><span class="fu">c</span>(RMSE,model<span class="sc">$</span>results<span class="sc">$</span>RMSE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -1761,7 +1758,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <h2 data-number="9.5" class="anchored" data-anchor-id="lasso-regression"><span class="header-section-number">9.5</span> LASSO Regression</h2>
 <p>Lasso regression (Least Absolute Shrinkage and Selection Operator) is a technique for linear models that adds a penalty term to the least squares loss function. <span class="math display">\[\hat{\beta}_{LASSO}=\mathop{\mathrm{argmin}}_\beta\left\lVert Y-X\beta\right\rVert^2+\lambda\left\lVert\beta\right\rVert_1\]</span> This penalty actually ``shrinks’’ some coefficients exactly to zero, effectively performing variable selection. Lasso is particularly useful when dealing with high-dimensional data where the number of predictors may exceed the number of observations. The parameter <span class="math inline">\(\lambda\)</span> is a tuning parameter, which controls the amount of shrinkage. It is typically chosen via cross validation. It is great for variable selection and prediction problems, but obtaining p-values and other inferential quantities is not so straightforward.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and run - I am doing this right now because the notes have a bug and rerunning this is annoying ... </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co">#.. </span></span>
 <span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: Matrix</code></pre>
@@ -1776,7 +1773,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <span id="cb162-5"><a href="#cb162-5" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
 <span id="cb162-6"><a href="#cb162-6" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3257277</code></pre>
+<pre><code>[1] 0.2704249</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
 <span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1789,20 +1786,19 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>12 x 1 sparse Matrix of class "dgCMatrix"
-                      s0
-(Intercept)  7.984282372
-(Intercept)  .          
-RushY        .          
-PassY        0.002092933
-PuntA        .          
-FGP          .          
-TurnD        .          
-PenY         .          
-PerR         .          
-ORY         -0.002593297
-OPY          .          
-RushDiff     0.001594503</code></pre>
+<pre><code>11 x 1 sparse Matrix of class "dgCMatrix"
+                       s0
+(Intercept) 10.7211210917
+(Intercept)  .           
+RushY        0.0007812133
+PassY        0.0016929743
+PuntA        .           
+FGP          .           
+TurnD        .           
+PenY         .           
+PerR         .           
+ORY         -0.0042682806
+OPY          .           </code></pre>
 </div>
 </div>
 </section>
