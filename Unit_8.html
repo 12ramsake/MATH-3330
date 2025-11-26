@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -160,7 +160,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Math 3330: Regression Notes</a> 
     </div>
@@ -793,20 +795,18 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <p>Overfitting is when the model fits the data set so well, that it misses the underlying relationship between the independent and dependent variables. This results in a model that fits the data set well, but performs poorly at predicting new, unseen data due to its overly complex structure.</p>
 <p>We can observe this in the example below:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4265</span>)</span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sample data</span></span>
-<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">50</span></span>
-<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
-<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
-<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data,<span class="at">pch=</span><span class="dv">22</span>,<span class="at">bg=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4265</span>)</span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sample data</span></span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
+<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
+<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data,<span class="at">pch=</span><span class="dv">22</span>,<span class="at">bg=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -814,42 +814,42 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># complexity of the model </span></span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>complexity<span class="ot">=</span><span class="dv">9</span></span>
-<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear regression model</span></span>
-<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data)</span>
-<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a polynomial regression model (degree = complexity) This model has more terms. </span></span>
-<span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>poly_model <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, complexity), <span class="at">data =</span> data)</span>
-<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-10"><a href="#cb97-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions</span></span>
-<span id="cb97-11"><a href="#cb97-11" aria-hidden="true" tabindex="-1"></a>linear_predictions <span class="ot">=</span> <span class="fu">predict</span>(linear_model, data)</span>
-<span id="cb97-12"><a href="#cb97-12" aria-hidden="true" tabindex="-1"></a>poly_predictions <span class="ot">=</span> <span class="fu">predict</span>(poly_model, data)</span>
-<span id="cb97-13"><a href="#cb97-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-14"><a href="#cb97-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean squared error (MSE)</span></span>
-<span id="cb97-15"><a href="#cb97-15" aria-hidden="true" tabindex="-1"></a>linear_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> linear_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb97-16"><a href="#cb97-16" aria-hidden="true" tabindex="-1"></a>poly_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> poly_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb97-17"><a href="#cb97-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-18"><a href="#cb97-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print MSE values</span></span>
-<span id="cb97-19"><a href="#cb97-19" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Linear Model MSE:"</span>, linear_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># complexity of the model </span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>complexity<span class="ot">=</span><span class="dv">9</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear regression model</span></span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data)</span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a polynomial regression model (degree = complexity) This model has more terms. </span></span>
+<span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a>poly_model <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, complexity), <span class="at">data =</span> data)</span>
+<span id="cb95-9"><a href="#cb95-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-10"><a href="#cb95-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions</span></span>
+<span id="cb95-11"><a href="#cb95-11" aria-hidden="true" tabindex="-1"></a>linear_predictions <span class="ot">=</span> <span class="fu">predict</span>(linear_model, data)</span>
+<span id="cb95-12"><a href="#cb95-12" aria-hidden="true" tabindex="-1"></a>poly_predictions <span class="ot">=</span> <span class="fu">predict</span>(poly_model, data)</span>
+<span id="cb95-13"><a href="#cb95-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-14"><a href="#cb95-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean squared error (MSE)</span></span>
+<span id="cb95-15"><a href="#cb95-15" aria-hidden="true" tabindex="-1"></a>linear_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> linear_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb95-16"><a href="#cb95-16" aria-hidden="true" tabindex="-1"></a>poly_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> poly_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb95-17"><a href="#cb95-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-18"><a href="#cb95-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print MSE values</span></span>
+<span id="cb95-19"><a href="#cb95-19" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Linear Model MSE:"</span>, linear_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Model MSE: 24.03022 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Polynomial Model MSE:"</span>, poly_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Polynomial Model MSE:"</span>, poly_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Polynomial Model MSE: 19.69118 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how the squared error is lower for the more complex model?</span></span>
-<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results - this is GG plot, another way to plot in R</span></span>
-<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
-<span id="cb101-6"><a href="#cb101-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb101-7"><a href="#cb101-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
-<span id="cb101-8"><a href="#cb101-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x,complexity)) <span class="sc">+</span></span>
-<span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Linear vs. Polynomial Regression (Degree 9)"</span>,</span>
-<span id="cb101-10"><a href="#cb101-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how the squared error is lower for the more complex model?</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results - this is GG plot, another way to plot in R</span></span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x) <span class="sc">+</span></span>
+<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x,complexity)) <span class="sc">+</span></span>
+<span id="cb99-9"><a href="#cb99-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Linear vs. Polynomial Regression (Degree 9)"</span>,</span>
+<span id="cb99-10"><a href="#cb99-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -857,42 +857,42 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate new data from the same process</span></span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">500</span></span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">=</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
-<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>yy <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">'x'</span><span class="ot">=</span>xx,<span class="st">'y'</span><span class="ot">=</span>yy)</span>
-<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>gen_linear_predictions <span class="ot">=</span> <span class="fu">predict</span>(linear_model, nd)</span>
-<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>gen_poly_predictions <span class="ot">=</span> <span class="fu">predict</span>(poly_model, nd)</span>
-<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean squared error (MSE)</span></span>
-<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a>gen_linear_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> gen_linear_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb102-12"><a href="#cb102-12" aria-hidden="true" tabindex="-1"></a>gen_poly_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> gen_poly_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb102-13"><a href="#cb102-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-14"><a href="#cb102-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print MSE values</span></span>
-<span id="cb102-15"><a href="#cb102-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Linear Model MSE:"</span>, gen_linear_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate new data from the same process</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">500</span></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">=</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>yy <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">'x'</span><span class="ot">=</span>xx,<span class="st">'y'</span><span class="ot">=</span>yy)</span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>gen_linear_predictions <span class="ot">=</span> <span class="fu">predict</span>(linear_model, nd)</span>
+<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a>gen_poly_predictions <span class="ot">=</span> <span class="fu">predict</span>(poly_model, nd)</span>
+<span id="cb100-9"><a href="#cb100-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-10"><a href="#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean squared error (MSE)</span></span>
+<span id="cb100-11"><a href="#cb100-11" aria-hidden="true" tabindex="-1"></a>gen_linear_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> gen_linear_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb100-12"><a href="#cb100-12" aria-hidden="true" tabindex="-1"></a>gen_poly_mse <span class="ot">=</span> <span class="fu">mean</span>((data<span class="sc">$</span>y <span class="sc">-</span> gen_poly_predictions)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb100-13"><a href="#cb100-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-14"><a href="#cb100-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print MSE values</span></span>
+<span id="cb100-15"><a href="#cb100-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Linear Model MSE:"</span>, gen_linear_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Model MSE: 45.06416 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Polynomial Model MSE:"</span>, gen_poly_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Polynomial Model MSE:"</span>, gen_poly_mse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Polynomial Model MSE: 50.40172 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how the generalized error is lower for the linear model?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how the generalized error is lower for the linear model?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Above, we fit two models to the data. One that allows for polynomial functions of degree at most 9 (not just linear functions), and one that only allows linear functions. It is clear that the polynomial model has a lower error on the data set at hand. However, when we generate new data from the same process, the polynomial model has a much higher error. This is an example of overfitting - the complex model does not generalize well beyond the current data set.</p>
 <div id="exm-8-3-3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 9.6</strong></span> Use the NFL data from the textbook - Perform all subsets regression with each of the comparison metrics described in the previous section.</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('leaps')</span></span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>all<span class="ot">=</span>leaps<span class="sc">::</span><span class="fu">regsubsets</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>RushY<span class="sc">+</span>ORY<span class="sc">+</span>OPY,<span class="at">data=</span>df,<span class="at">nvmax=</span><span class="dv">10</span>,<span class="at">method=</span><span class="st">'exhaustive'</span>)</span>
-<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2^8</span></span>
-<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'r2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('leaps')</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>all<span class="ot">=</span>leaps<span class="sc">::</span><span class="fu">regsubsets</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>RushY<span class="sc">+</span>ORY<span class="sc">+</span>OPY,<span class="at">data=</span>df,<span class="at">nvmax=</span><span class="dv">10</span>,<span class="at">method=</span><span class="st">'exhaustive'</span>)</span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2^8</span></span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'r2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -900,7 +900,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'adjr2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'adjr2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -908,7 +908,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'Cp'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'Cp'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -916,7 +916,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'bic'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'bic'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -928,23 +928,23 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 <p>The <code>leaps</code> package allows us to do all subsets regression. We see that (with the exception of the <span class="math inline">\(R\)</span>-squared) the best model under all criterion contains passing yards, rushing yard differential, and opponent passing yards.</p>
 <p>We can do the same thing on the real estate data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('leaps')</span></span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If you run this, you will get the following error: </span></span>
-<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all=leaps::regsubsets(ppsq~ District +  Extwall +     </span></span>
-<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="co">#             Stories  +    Year_Built  + Fin_sqft  +   </span></span>
-<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co">#             Units   +     Bdrms   +    </span></span>
-<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="co">#             Fbath  +    Lotsize   + Sale_date +District*Lotsize,data=df2,nvmax=10,method='exhaustive')</span></span>
-<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="co"># "Error in leaps.exhaustive(a, really.big) : Exhaustive search will be S L O W, must specify really.big=T"</span></span>
-<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This shows how this can quickly become computationally intensive</span></span>
-<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="co"># You will see that running the following code takes very long!</span></span>
-<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a>all<span class="ot">=</span>leaps<span class="sc">::</span><span class="fu">regsubsets</span>(ppsq<span class="sc">~</span> District <span class="sc">+</span> </span>
-<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a>            Stories  <span class="sc">+</span>    Year_Built  <span class="sc">+</span>    Bdrms   <span class="sc">+</span></span>
-<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a>            Fbath  <span class="sc">+</span>    LLS   <span class="sc">+</span> Sale_date<span class="sc">+</span>District<span class="sc">*</span>Lotsize,<span class="at">data=</span>df2,<span class="at">nvmax=</span><span class="dv">10</span>,<span class="at">really.big=</span>T,<span class="at">method=</span><span class="st">'exhaustive'</span>)</span>
-<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-15"><a href="#cb111-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'r2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('leaps')</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If you run this, you will get the following error: </span></span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="co"># all=leaps::regsubsets(ppsq~ District +  Extwall +     </span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co">#             Stories  +    Year_Built  + Fin_sqft  +   </span></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="co">#             Units   +     Bdrms   +    </span></span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="co">#             Fbath  +    Lotsize   + Sale_date +District*Lotsize,data=df2,nvmax=10,method='exhaustive')</span></span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="co"># "Error in leaps.exhaustive(a, really.big) : Exhaustive search will be S L O W, must specify really.big=T"</span></span>
+<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a><span class="co"># This shows how this can quickly become computationally intensive</span></span>
+<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a><span class="co"># You will see that running the following code takes very long!</span></span>
+<span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a>all<span class="ot">=</span>leaps<span class="sc">::</span><span class="fu">regsubsets</span>(ppsq<span class="sc">~</span> District <span class="sc">+</span> </span>
+<span id="cb109-12"><a href="#cb109-12" aria-hidden="true" tabindex="-1"></a>            Stories  <span class="sc">+</span>    Year_Built  <span class="sc">+</span>    Bdrms   <span class="sc">+</span></span>
+<span id="cb109-13"><a href="#cb109-13" aria-hidden="true" tabindex="-1"></a>            Fbath  <span class="sc">+</span>    LLS   <span class="sc">+</span> Sale_date<span class="sc">+</span>District<span class="sc">*</span>Lotsize,<span class="at">data=</span>df2,<span class="at">nvmax=</span><span class="dv">10</span>,<span class="at">really.big=</span>T,<span class="at">method=</span><span class="st">'exhaustive'</span>)</span>
+<span id="cb109-14"><a href="#cb109-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-15"><a href="#cb109-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-16"><a href="#cb109-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-17"><a href="#cb109-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'r2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -952,7 +952,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'adjr2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'adjr2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -960,7 +960,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'Cp'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'Cp'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -968,7 +968,7 @@ C_k = \frac{SSE_R}{MSE_C} - (n - 2k)
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'bic'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(all,<span class="at">scale=</span><span class="st">'bic'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1196,25 +1196,25 @@ Note
 <p><span class="theorem-title"><strong>Example 9.9</strong></span> Recall the real estate example - <a href="Unit_5.html#exm-6-4-1" class="quarto-xref">Example&nbsp;<span>6.6</span></a>. Run forward selection, backward selection and stepwise regression using AIC as the criterion, including all regressors. (AIC is done automatically in R.)</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ########### Automated methods ###########</span></span>
-<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="do">############ Forward selection with AIC ###########</span></span>
-<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>df3<span class="ot">=</span>df2[,<span class="fu">c</span>(<span class="st">'District'</span>,<span class="st">'Extwall'</span>,<span class="st">'Stories'</span>,<span class="st">'Year_Built'</span>,<span class="st">'Units'</span>,<span class="st">'Bdrms'</span>,<span class="st">'Fbath'</span>,<span class="st">'Sale_date'</span>,<span class="st">'ppsq'</span>,<span class="st">'LLS'</span> )]</span>
-<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="co">#define intercept-only model</span></span>
-<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a>intercept_only <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>df3)</span>
-<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a><span class="co"># define model with all predictors</span></span>
-<span id="cb115-13"><a href="#cb115-13" aria-hidden="true" tabindex="-1"></a>all <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> ., <span class="at">data=</span>df3)</span>
-<span id="cb115-14"><a href="#cb115-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-15"><a href="#cb115-15" aria-hidden="true" tabindex="-1"></a><span class="co"># perform forward stepwise regression</span></span>
-<span id="cb115-16"><a href="#cb115-16" aria-hidden="true" tabindex="-1"></a>forward <span class="ot">=</span> <span class="fu">step</span>(intercept_only, <span class="at">direction=</span><span class="st">'forward'</span>, <span class="at">scope=</span><span class="fu">formula</span>(all), <span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb115-17"><a href="#cb115-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-18"><a href="#cb115-18" aria-hidden="true" tabindex="-1"></a><span class="co">#view results of forward stepwise regression</span></span>
-<span id="cb115-19"><a href="#cb115-19" aria-hidden="true" tabindex="-1"></a>forward<span class="sc">$</span>anova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ########### Automated methods ###########</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="do">############ Forward selection with AIC ###########</span></span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a>df3<span class="ot">=</span>df2[,<span class="fu">c</span>(<span class="st">'District'</span>,<span class="st">'Extwall'</span>,<span class="st">'Stories'</span>,<span class="st">'Year_Built'</span>,<span class="st">'Units'</span>,<span class="st">'Bdrms'</span>,<span class="st">'Fbath'</span>,<span class="st">'Sale_date'</span>,<span class="st">'ppsq'</span>,<span class="st">'LLS'</span> )]</span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-7"><a href="#cb113-7" aria-hidden="true" tabindex="-1"></a><span class="co">#define intercept-only model</span></span>
+<span id="cb113-8"><a href="#cb113-8" aria-hidden="true" tabindex="-1"></a>intercept_only <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>df3)</span>
+<span id="cb113-9"><a href="#cb113-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-10"><a href="#cb113-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-11"><a href="#cb113-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-12"><a href="#cb113-12" aria-hidden="true" tabindex="-1"></a><span class="co"># define model with all predictors</span></span>
+<span id="cb113-13"><a href="#cb113-13" aria-hidden="true" tabindex="-1"></a>all <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> ., <span class="at">data=</span>df3)</span>
+<span id="cb113-14"><a href="#cb113-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-15"><a href="#cb113-15" aria-hidden="true" tabindex="-1"></a><span class="co"># perform forward stepwise regression</span></span>
+<span id="cb113-16"><a href="#cb113-16" aria-hidden="true" tabindex="-1"></a>forward <span class="ot">=</span> <span class="fu">step</span>(intercept_only, <span class="at">direction=</span><span class="st">'forward'</span>, <span class="at">scope=</span><span class="fu">formula</span>(all), <span class="at">trace=</span><span class="dv">0</span>)</span>
+<span id="cb113-17"><a href="#cb113-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-18"><a href="#cb113-18" aria-hidden="true" tabindex="-1"></a><span class="co">#view results of forward stepwise regression</span></span>
+<span id="cb113-19"><a href="#cb113-19" aria-hidden="true" tabindex="-1"></a>forward<span class="sc">$</span>anova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Step  Df   Deviance Resid. Df Resid. Dev       AIC
 1               NA         NA     24382   7225.476 -29654.39
@@ -1227,8 +1227,8 @@ Note
 8        + LLS  -1   21.55485     24348   2649.778 -54045.89
 9    + Extwall  -8   12.84896     24340   2636.929 -54148.41</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view final model</span></span>
-<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(forward<span class="sc">$</span>coefficients)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view final model</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(forward<span class="sc">$</span>coefficients)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "(Intercept)"            "District2"              "District3"             
  [4] "District4"              "District5"              "District6"             
@@ -1246,26 +1246,26 @@ Note
 [40] "ExtwallMasonry / Frame" "ExtwallPrem Wood"       "ExtwallStone"          
 [43] "ExtwallStucco"         </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ###################### Backward selection with AIC ######################</span></span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="co">#define intercept-only model</span></span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>intercept_only <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>df3)</span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="co">#define model with all predictors</span></span>
-<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>all <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> ., <span class="at">data=</span>df3)</span>
-<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="co">#perform backward stepwise regression</span></span>
-<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a>backward <span class="ot">=</span> <span class="fu">step</span>(all, <span class="at">direction=</span><span class="st">'backward'</span>, <span class="at">scope=</span><span class="fu">formula</span>(all), <span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="co">#view results of backward stepwise regression</span></span>
-<span id="cb119-12"><a href="#cb119-12" aria-hidden="true" tabindex="-1"></a>backward<span class="sc">$</span>anova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ###################### Backward selection with AIC ######################</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="co">#define intercept-only model</span></span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>intercept_only <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>df3)</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co">#define model with all predictors</span></span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>all <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> ., <span class="at">data=</span>df3)</span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="co">#perform backward stepwise regression</span></span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>backward <span class="ot">=</span> <span class="fu">step</span>(all, <span class="at">direction=</span><span class="st">'backward'</span>, <span class="at">scope=</span><span class="fu">formula</span>(all), <span class="at">trace=</span><span class="dv">0</span>)</span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="co">#view results of backward stepwise regression</span></span>
+<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>backward<span class="sc">$</span>anova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Step Df  Deviance Resid. Df Resid. Dev       AIC
 1           NA        NA     24337   2636.737 -54144.18
 2 - Stories  3 0.1911574     24340   2636.929 -54148.41</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view final model</span></span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(backward<span class="sc">$</span>coefficients)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view final model</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(backward<span class="sc">$</span>coefficients)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "(Intercept)"            "District2"              "District3"             
  [4] "District4"              "District5"              "District6"             
@@ -1283,18 +1283,18 @@ Note
 [40] "Fbath3"                 "Fbath4"                 "Sale_date"             
 [43] "LLS"                   </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Stepwise Regression with AIC ###########</span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define intercept-only model</span></span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>intercept_only <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>df3)</span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model with all predictors</span></span>
-<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a>all <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> ., <span class="at">data=</span>df3)</span>
-<span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-8"><a href="#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="co">#perform stepwise regression</span></span>
-<span id="cb123-9"><a href="#cb123-9" aria-hidden="true" tabindex="-1"></a>both <span class="ot">=</span> <span class="fu">step</span>(intercept_only, <span class="at">direction=</span><span class="st">'both'</span>, <span class="at">scope=</span><span class="fu">formula</span>(all), <span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb123-10"><a href="#cb123-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-11"><a href="#cb123-11" aria-hidden="true" tabindex="-1"></a><span class="co">#view results of Stepwise regression</span></span>
-<span id="cb123-12"><a href="#cb123-12" aria-hidden="true" tabindex="-1"></a>both<span class="sc">$</span>anova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Stepwise Regression with AIC ###########</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define intercept-only model</span></span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>intercept_only <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>df3)</span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model with all predictors</span></span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>all <span class="ot">=</span> <span class="fu">lm</span>(ppsq<span class="sc">~</span> ., <span class="at">data=</span>df3)</span>
+<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co">#perform stepwise regression</span></span>
+<span id="cb121-9"><a href="#cb121-9" aria-hidden="true" tabindex="-1"></a>both <span class="ot">=</span> <span class="fu">step</span>(intercept_only, <span class="at">direction=</span><span class="st">'both'</span>, <span class="at">scope=</span><span class="fu">formula</span>(all), <span class="at">trace=</span><span class="dv">0</span>)</span>
+<span id="cb121-10"><a href="#cb121-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-11"><a href="#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="co">#view results of Stepwise regression</span></span>
+<span id="cb121-12"><a href="#cb121-12" aria-hidden="true" tabindex="-1"></a>both<span class="sc">$</span>anova</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Step  Df   Deviance Resid. Df Resid. Dev       AIC
 1               NA         NA     24382   7225.476 -29654.39
@@ -1307,8 +1307,8 @@ Note
 8        + LLS  -1   21.55485     24348   2649.778 -54045.89
 9    + Extwall  -8   12.84896     24340   2636.929 -54148.41</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view final model</span></span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(both<span class="sc">$</span>coefficients)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view final model</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(both<span class="sc">$</span>coefficients)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "(Intercept)"            "District2"              "District3"             
  [4] "District4"              "District5"              "District6"             
@@ -1332,70 +1332,70 @@ Note
 <p><span class="theorem-title"><strong>Example 9.10</strong></span> Use the NFL data from the textbook - Run forward selection and backward selection including all regressors using the <span class="math inline">\(F\)</span> statistic criterion.</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="do">############ Forward selection by F value</span></span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Threshold for p-value to determine variable inclusion</span></span>
-<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>thresh <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty vector to store currently selected variables</span></span>
-<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a>curr_vars <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-8"><a href="#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of variable names excluding the dependent variable 'Wins' and 'PerR'</span></span>
-<span id="cb127-9"><a href="#cb127-9" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> <span class="fu">names</span>(df)[<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>]</span>
-<span id="cb127-10"><a href="#cb127-10" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> <span class="st">'PerR'</span>]</span>
-<span id="cb127-11"><a href="#cb127-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-12"><a href="#cb127-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the passed flag to TRUE</span></span>
-<span id="cb127-13"><a href="#cb127-13" aria-hidden="true" tabindex="-1"></a>passed <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb127-14"><a href="#cb127-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-15"><a href="#cb127-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop until no more variables can be added (passed is FALSE) or there are no more variables left</span></span>
-<span id="cb127-16"><a href="#cb127-16" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(passed <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(vars_left) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb127-17"><a href="#cb127-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb127-18"><a href="#cb127-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize an empty vector to store p-values of models</span></span>
-<span id="cb127-19"><a href="#cb127-19" aria-hidden="true" tabindex="-1"></a>  pvals <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb127-20"><a href="#cb127-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb127-21"><a href="#cb127-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Loop through each remaining variable</span></span>
-<span id="cb127-22"><a href="#cb127-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(var <span class="cf">in</span> vars_left) {</span>
-<span id="cb127-23"><a href="#cb127-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a temporary dataframe with current variables and the new candidate variable</span></span>
-<span id="cb127-24"><a href="#cb127-24" aria-hidden="true" tabindex="-1"></a>    df_tmp <span class="ot">=</span> df[, <span class="fu">c</span>(curr_vars, var, <span class="st">'Wins'</span>)]</span>
-<span id="cb127-25"><a href="#cb127-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb127-26"><a href="#cb127-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit a linear model with 'Wins' as the dependent variable</span></span>
-<span id="cb127-27"><a href="#cb127-27" aria-hidden="true" tabindex="-1"></a>    model <span class="ot">=</span> <span class="fu">lm</span>(Wins <span class="sc">~</span> ., df_tmp)</span>
-<span id="cb127-28"><a href="#cb127-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb127-29"><a href="#cb127-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the summary of the model</span></span>
-<span id="cb127-30"><a href="#cb127-30" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">=</span> <span class="fu">summary</span>(model)</span>
-<span id="cb127-31"><a href="#cb127-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb127-32"><a href="#cb127-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the p-value of the F-statistic for the model</span></span>
-<span id="cb127-33"><a href="#cb127-33" aria-hidden="true" tabindex="-1"></a>    pval <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(s<span class="sc">$</span>fstatistic[<span class="dv">1</span>], s<span class="sc">$</span>fstatistic[<span class="dv">2</span>], s<span class="sc">$</span>fstatistic[<span class="dv">3</span>])</span>
-<span id="cb127-34"><a href="#cb127-34" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb127-35"><a href="#cb127-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Append the p-value to the pvals vector</span></span>
-<span id="cb127-36"><a href="#cb127-36" aria-hidden="true" tabindex="-1"></a>    pvals <span class="ot">=</span> <span class="fu">c</span>(pvals, pval)</span>
-<span id="cb127-37"><a href="#cb127-37" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb127-38"><a href="#cb127-38" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb127-39"><a href="#cb127-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find the index of the minimum p-value</span></span>
-<span id="cb127-40"><a href="#cb127-40" aria-hidden="true" tabindex="-1"></a>  min_index <span class="ot">=</span> <span class="fu">which.min</span>(pvals)</span>
-<span id="cb127-41"><a href="#cb127-41" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb127-42"><a href="#cb127-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the minimum p-value</span></span>
-<span id="cb127-43"><a href="#cb127-43" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">=</span> pvals[min_index]</span>
-<span id="cb127-44"><a href="#cb127-44" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb127-45"><a href="#cb127-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if the minimum p-value is less than the threshold</span></span>
-<span id="cb127-46"><a href="#cb127-46" aria-hidden="true" tabindex="-1"></a>  passed <span class="ot">=</span> mp <span class="sc">&lt;</span> thresh</span>
-<span id="cb127-47"><a href="#cb127-47" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb127-48"><a href="#cb127-48" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(passed) {</span>
-<span id="cb127-49"><a href="#cb127-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If passed, get the corresponding variable name</span></span>
-<span id="cb127-50"><a href="#cb127-50" aria-hidden="true" tabindex="-1"></a>    new_var <span class="ot">=</span> vars_left[min_index]</span>
-<span id="cb127-51"><a href="#cb127-51" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb127-52"><a href="#cb127-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the new variable to the current variables list</span></span>
-<span id="cb127-53"><a href="#cb127-53" aria-hidden="true" tabindex="-1"></a>    curr_vars <span class="ot">=</span> <span class="fu">c</span>(curr_vars, new_var)</span>
-<span id="cb127-54"><a href="#cb127-54" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb127-55"><a href="#cb127-55" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove the new variable from the remaining variables list</span></span>
-<span id="cb127-56"><a href="#cb127-56" aria-hidden="true" tabindex="-1"></a>    vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> new_var]</span>
-<span id="cb127-57"><a href="#cb127-57" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb127-58"><a href="#cb127-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print the p-value and the variable being added</span></span>
-<span id="cb127-59"><a href="#cb127-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'pvalue'</span>)</span>
-<span id="cb127-60"><a href="#cb127-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(mp)</span>
-<span id="cb127-61"><a href="#cb127-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'adding'</span>)</span>
-<span id="cb127-62"><a href="#cb127-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(new_var)</span>
-<span id="cb127-63"><a href="#cb127-63" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb127-64"><a href="#cb127-64" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="do">############ Forward selection by F value</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Threshold for p-value to determine variable inclusion</span></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>thresh <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty vector to store currently selected variables</span></span>
+<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a>curr_vars <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb125-7"><a href="#cb125-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-8"><a href="#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector of variable names excluding the dependent variable 'Wins' and 'PerR'</span></span>
+<span id="cb125-9"><a href="#cb125-9" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> <span class="fu">names</span>(df)[<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb125-10"><a href="#cb125-10" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> <span class="st">'PerR'</span>]</span>
+<span id="cb125-11"><a href="#cb125-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-12"><a href="#cb125-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the passed flag to TRUE</span></span>
+<span id="cb125-13"><a href="#cb125-13" aria-hidden="true" tabindex="-1"></a>passed <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb125-14"><a href="#cb125-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-15"><a href="#cb125-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop until no more variables can be added (passed is FALSE) or there are no more variables left</span></span>
+<span id="cb125-16"><a href="#cb125-16" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(passed <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(vars_left) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb125-17"><a href="#cb125-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb125-18"><a href="#cb125-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize an empty vector to store p-values of models</span></span>
+<span id="cb125-19"><a href="#cb125-19" aria-hidden="true" tabindex="-1"></a>  pvals <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb125-20"><a href="#cb125-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb125-21"><a href="#cb125-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Loop through each remaining variable</span></span>
+<span id="cb125-22"><a href="#cb125-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(var <span class="cf">in</span> vars_left) {</span>
+<span id="cb125-23"><a href="#cb125-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a temporary dataframe with current variables and the new candidate variable</span></span>
+<span id="cb125-24"><a href="#cb125-24" aria-hidden="true" tabindex="-1"></a>    df_tmp <span class="ot">=</span> df[, <span class="fu">c</span>(curr_vars, var, <span class="st">'Wins'</span>)]</span>
+<span id="cb125-25"><a href="#cb125-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb125-26"><a href="#cb125-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit a linear model with 'Wins' as the dependent variable</span></span>
+<span id="cb125-27"><a href="#cb125-27" aria-hidden="true" tabindex="-1"></a>    model <span class="ot">=</span> <span class="fu">lm</span>(Wins <span class="sc">~</span> ., df_tmp)</span>
+<span id="cb125-28"><a href="#cb125-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb125-29"><a href="#cb125-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the summary of the model</span></span>
+<span id="cb125-30"><a href="#cb125-30" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">=</span> <span class="fu">summary</span>(model)</span>
+<span id="cb125-31"><a href="#cb125-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb125-32"><a href="#cb125-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the p-value of the F-statistic for the model</span></span>
+<span id="cb125-33"><a href="#cb125-33" aria-hidden="true" tabindex="-1"></a>    pval <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(s<span class="sc">$</span>fstatistic[<span class="dv">1</span>], s<span class="sc">$</span>fstatistic[<span class="dv">2</span>], s<span class="sc">$</span>fstatistic[<span class="dv">3</span>])</span>
+<span id="cb125-34"><a href="#cb125-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb125-35"><a href="#cb125-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Append the p-value to the pvals vector</span></span>
+<span id="cb125-36"><a href="#cb125-36" aria-hidden="true" tabindex="-1"></a>    pvals <span class="ot">=</span> <span class="fu">c</span>(pvals, pval)</span>
+<span id="cb125-37"><a href="#cb125-37" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb125-38"><a href="#cb125-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb125-39"><a href="#cb125-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find the index of the minimum p-value</span></span>
+<span id="cb125-40"><a href="#cb125-40" aria-hidden="true" tabindex="-1"></a>  min_index <span class="ot">=</span> <span class="fu">which.min</span>(pvals)</span>
+<span id="cb125-41"><a href="#cb125-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb125-42"><a href="#cb125-42" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the minimum p-value</span></span>
+<span id="cb125-43"><a href="#cb125-43" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">=</span> pvals[min_index]</span>
+<span id="cb125-44"><a href="#cb125-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb125-45"><a href="#cb125-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if the minimum p-value is less than the threshold</span></span>
+<span id="cb125-46"><a href="#cb125-46" aria-hidden="true" tabindex="-1"></a>  passed <span class="ot">=</span> mp <span class="sc">&lt;</span> thresh</span>
+<span id="cb125-47"><a href="#cb125-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb125-48"><a href="#cb125-48" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(passed) {</span>
+<span id="cb125-49"><a href="#cb125-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If passed, get the corresponding variable name</span></span>
+<span id="cb125-50"><a href="#cb125-50" aria-hidden="true" tabindex="-1"></a>    new_var <span class="ot">=</span> vars_left[min_index]</span>
+<span id="cb125-51"><a href="#cb125-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb125-52"><a href="#cb125-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the new variable to the current variables list</span></span>
+<span id="cb125-53"><a href="#cb125-53" aria-hidden="true" tabindex="-1"></a>    curr_vars <span class="ot">=</span> <span class="fu">c</span>(curr_vars, new_var)</span>
+<span id="cb125-54"><a href="#cb125-54" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb125-55"><a href="#cb125-55" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove the new variable from the remaining variables list</span></span>
+<span id="cb125-56"><a href="#cb125-56" aria-hidden="true" tabindex="-1"></a>    vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> new_var]</span>
+<span id="cb125-57"><a href="#cb125-57" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb125-58"><a href="#cb125-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print the p-value and the variable being added</span></span>
+<span id="cb125-59"><a href="#cb125-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'pvalue'</span>)</span>
+<span id="cb125-60"><a href="#cb125-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(mp)</span>
+<span id="cb125-61"><a href="#cb125-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'adding'</span>)</span>
+<span id="cb125-62"><a href="#cb125-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(new_var)</span>
+<span id="cb125-63"><a href="#cb125-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb125-64"><a href="#cb125-64" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "pvalue"
        value 
@@ -1438,64 +1438,64 @@ Note
 [1] "adding"
 [1] "FGP"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the final list of selected variables</span></span>
-<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(curr_vars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the final list of selected variables</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(curr_vars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ORY"   "PassY" "RushY" "OPY"   "PenY"  "TurnD" "PuntA" "FGP"  </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Threshold for p-value to determine variable exclusion</span></span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>thresh <span class="ot">=</span> <span class="fl">0.05</span></span>
-<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a vector of variable names excluding the dependent variable 'Wins' and 'PerR'</span></span>
-<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> <span class="fu">names</span>(df)[<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>]</span>
-<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> <span class="st">'PerR'</span>]</span>
-<span id="cb131-7"><a href="#cb131-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-8"><a href="#cb131-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the passed flag to TRUE</span></span>
-<span id="cb131-9"><a href="#cb131-9" aria-hidden="true" tabindex="-1"></a>passed <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb131-10"><a href="#cb131-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-11"><a href="#cb131-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop until no more variables need to be removed (passed is FALSE) or there are no more variables left</span></span>
-<span id="cb131-12"><a href="#cb131-12" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(passed <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(vars_left) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb131-13"><a href="#cb131-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a temporary dataframe with remaining variables and the dependent variable 'Wins'</span></span>
-<span id="cb131-14"><a href="#cb131-14" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="ot">=</span> df[, <span class="fu">c</span>(vars_left, <span class="st">'Wins'</span>)]</span>
-<span id="cb131-15"><a href="#cb131-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-16"><a href="#cb131-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit a linear model with 'Wins' as the dependent variable</span></span>
-<span id="cb131-17"><a href="#cb131-17" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Wins <span class="sc">~</span> ., df_tmp)</span>
-<span id="cb131-18"><a href="#cb131-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-19"><a href="#cb131-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the summary of the model</span></span>
-<span id="cb131-20"><a href="#cb131-20" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">=</span> <span class="fu">summary</span>(model)</span>
-<span id="cb131-21"><a href="#cb131-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-22"><a href="#cb131-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract the p-values of the t-statistics for the coefficients</span></span>
-<span id="cb131-23"><a href="#cb131-23" aria-hidden="true" tabindex="-1"></a>  tv <span class="ot">=</span> <span class="fu">coef</span>(s)[, <span class="st">"Pr(&gt;|t|)"</span>]</span>
-<span id="cb131-24"><a href="#cb131-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-25"><a href="#cb131-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove the intercept p-value</span></span>
-<span id="cb131-26"><a href="#cb131-26" aria-hidden="true" tabindex="-1"></a>  tv <span class="ot">=</span> tv[<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb131-27"><a href="#cb131-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-28"><a href="#cb131-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find the index of the maximum p-value</span></span>
-<span id="cb131-29"><a href="#cb131-29" aria-hidden="true" tabindex="-1"></a>  max_index <span class="ot">=</span> <span class="fu">which.max</span>(tv)</span>
-<span id="cb131-30"><a href="#cb131-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-31"><a href="#cb131-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the maximum p-value</span></span>
-<span id="cb131-32"><a href="#cb131-32" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">=</span> tv[max_index]</span>
-<span id="cb131-33"><a href="#cb131-33" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-34"><a href="#cb131-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print the maximum p-value</span></span>
-<span id="cb131-35"><a href="#cb131-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(mp)</span>
-<span id="cb131-36"><a href="#cb131-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-37"><a href="#cb131-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if the maximum p-value is greater than the threshold</span></span>
-<span id="cb131-38"><a href="#cb131-38" aria-hidden="true" tabindex="-1"></a>  passed <span class="ot">=</span> mp <span class="sc">&gt;</span> thresh</span>
-<span id="cb131-39"><a href="#cb131-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb131-40"><a href="#cb131-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(passed) {</span>
-<span id="cb131-41"><a href="#cb131-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If passed, get the corresponding variable name to be removed</span></span>
-<span id="cb131-42"><a href="#cb131-42" aria-hidden="true" tabindex="-1"></a>    rem_var <span class="ot">=</span> <span class="fu">names</span>(max_index)</span>
-<span id="cb131-43"><a href="#cb131-43" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb131-44"><a href="#cb131-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove the variable from the remaining variables list</span></span>
-<span id="cb131-45"><a href="#cb131-45" aria-hidden="true" tabindex="-1"></a>    vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> rem_var]</span>
-<span id="cb131-46"><a href="#cb131-46" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb131-47"><a href="#cb131-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print the p-value and the variable being removed</span></span>
-<span id="cb131-48"><a href="#cb131-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'pvalue'</span>)</span>
-<span id="cb131-49"><a href="#cb131-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(mp)</span>
-<span id="cb131-50"><a href="#cb131-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'removing'</span>)</span>
-<span id="cb131-51"><a href="#cb131-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(rem_var)</span>
-<span id="cb131-52"><a href="#cb131-52" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb131-53"><a href="#cb131-53" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Threshold for p-value to determine variable exclusion</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>thresh <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a vector of variable names excluding the dependent variable 'Wins' and 'PerR'</span></span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> <span class="fu">names</span>(df)[<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a>vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> <span class="st">'PerR'</span>]</span>
+<span id="cb129-7"><a href="#cb129-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-8"><a href="#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the passed flag to TRUE</span></span>
+<span id="cb129-9"><a href="#cb129-9" aria-hidden="true" tabindex="-1"></a>passed <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb129-10"><a href="#cb129-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-11"><a href="#cb129-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop until no more variables need to be removed (passed is FALSE) or there are no more variables left</span></span>
+<span id="cb129-12"><a href="#cb129-12" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(passed <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(vars_left) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb129-13"><a href="#cb129-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a temporary dataframe with remaining variables and the dependent variable 'Wins'</span></span>
+<span id="cb129-14"><a href="#cb129-14" aria-hidden="true" tabindex="-1"></a>  df_tmp <span class="ot">=</span> df[, <span class="fu">c</span>(vars_left, <span class="st">'Wins'</span>)]</span>
+<span id="cb129-15"><a href="#cb129-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-16"><a href="#cb129-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit a linear model with 'Wins' as the dependent variable</span></span>
+<span id="cb129-17"><a href="#cb129-17" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Wins <span class="sc">~</span> ., df_tmp)</span>
+<span id="cb129-18"><a href="#cb129-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-19"><a href="#cb129-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the summary of the model</span></span>
+<span id="cb129-20"><a href="#cb129-20" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">=</span> <span class="fu">summary</span>(model)</span>
+<span id="cb129-21"><a href="#cb129-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-22"><a href="#cb129-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract the p-values of the t-statistics for the coefficients</span></span>
+<span id="cb129-23"><a href="#cb129-23" aria-hidden="true" tabindex="-1"></a>  tv <span class="ot">=</span> <span class="fu">coef</span>(s)[, <span class="st">"Pr(&gt;|t|)"</span>]</span>
+<span id="cb129-24"><a href="#cb129-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-25"><a href="#cb129-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove the intercept p-value</span></span>
+<span id="cb129-26"><a href="#cb129-26" aria-hidden="true" tabindex="-1"></a>  tv <span class="ot">=</span> tv[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb129-27"><a href="#cb129-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-28"><a href="#cb129-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find the index of the maximum p-value</span></span>
+<span id="cb129-29"><a href="#cb129-29" aria-hidden="true" tabindex="-1"></a>  max_index <span class="ot">=</span> <span class="fu">which.max</span>(tv)</span>
+<span id="cb129-30"><a href="#cb129-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-31"><a href="#cb129-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the maximum p-value</span></span>
+<span id="cb129-32"><a href="#cb129-32" aria-hidden="true" tabindex="-1"></a>  mp <span class="ot">=</span> tv[max_index]</span>
+<span id="cb129-33"><a href="#cb129-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-34"><a href="#cb129-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print the maximum p-value</span></span>
+<span id="cb129-35"><a href="#cb129-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(mp)</span>
+<span id="cb129-36"><a href="#cb129-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-37"><a href="#cb129-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if the maximum p-value is greater than the threshold</span></span>
+<span id="cb129-38"><a href="#cb129-38" aria-hidden="true" tabindex="-1"></a>  passed <span class="ot">=</span> mp <span class="sc">&gt;</span> thresh</span>
+<span id="cb129-39"><a href="#cb129-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb129-40"><a href="#cb129-40" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(passed) {</span>
+<span id="cb129-41"><a href="#cb129-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If passed, get the corresponding variable name to be removed</span></span>
+<span id="cb129-42"><a href="#cb129-42" aria-hidden="true" tabindex="-1"></a>    rem_var <span class="ot">=</span> <span class="fu">names</span>(max_index)</span>
+<span id="cb129-43"><a href="#cb129-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb129-44"><a href="#cb129-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove the variable from the remaining variables list</span></span>
+<span id="cb129-45"><a href="#cb129-45" aria-hidden="true" tabindex="-1"></a>    vars_left <span class="ot">=</span> vars_left[vars_left <span class="sc">!=</span> rem_var]</span>
+<span id="cb129-46"><a href="#cb129-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb129-47"><a href="#cb129-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print the p-value and the variable being removed</span></span>
+<span id="cb129-48"><a href="#cb129-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'pvalue'</span>)</span>
+<span id="cb129-49"><a href="#cb129-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(mp)</span>
+<span id="cb129-50"><a href="#cb129-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">'removing'</span>)</span>
+<span id="cb129-51"><a href="#cb129-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(rem_var)</span>
+<span id="cb129-52"><a href="#cb129-52" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb129-53"><a href="#cb129-53" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    TurnD 
 0.7312364 
@@ -1542,8 +1542,8 @@ Note
        PassY 
 0.0001775241 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the final list of remaining variables</span></span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vars_left)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the final list of remaining variables</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vars_left)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "PassY" "ORY"  </code></pre>
 </div>
@@ -1573,27 +1573,27 @@ Note
 </div>
 <p>The <code>caret</code> package can be used to perform 5-fold CV.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Cross Validation Regression ###########</span></span>
-<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('caret')</span></span>
-<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Cross Validation Regression ###########</span></span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('caret')</span></span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'caret' was built under R version 4.4.3</code></pre>
+<pre><code>Warning: package 'caret' was built under R version 4.5.2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: lattice</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co">#specify the cross-validation method 5 fold in this case. </span></span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>ctrl <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="co">#fit a regression model and use k-fold CV to evaluate performance</span></span>
-<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">train</span>(ppsq<span class="sc">~</span>., <span class="at">data =</span> df3, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
-<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb138-8"><a href="#cb138-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(var_list)){</span>
-<span id="cb138-9"><a href="#cb138-9" aria-hidden="true" tabindex="-1"></a>  vars<span class="ot">=</span><span class="fu">c</span>(var_list[<span class="dv">1</span><span class="sc">:</span>i],<span class="st">"ppsq"</span>)</span>
-<span id="cb138-10"><a href="#cb138-10" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">train</span>(ppsq<span class="sc">~</span>., <span class="at">data =</span> df3[,vars], <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
-<span id="cb138-11"><a href="#cb138-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"k"</span> ,i,<span class="st">" CV Result "</span>, model<span class="sc">$</span>results<span class="sc">$</span>RMSE,<span class="at">sep=</span><span class="st">""</span>))</span>
-<span id="cb138-12"><a href="#cb138-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co">#specify the cross-validation method 5 fold in this case. </span></span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>ctrl <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="co">#fit a regression model and use k-fold CV to evaluate performance</span></span>
+<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">train</span>(ppsq<span class="sc">~</span>., <span class="at">data =</span> df3, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-7"><a href="#cb136-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-8"><a href="#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(var_list)){</span>
+<span id="cb136-9"><a href="#cb136-9" aria-hidden="true" tabindex="-1"></a>  vars<span class="ot">=</span><span class="fu">c</span>(var_list[<span class="dv">1</span><span class="sc">:</span>i],<span class="st">"ppsq"</span>)</span>
+<span id="cb136-10"><a href="#cb136-10" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">train</span>(ppsq<span class="sc">~</span>., <span class="at">data =</span> df3[,vars], <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<span id="cb136-11"><a href="#cb136-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"k"</span> ,i,<span class="st">" CV Result "</span>, model<span class="sc">$</span>results<span class="sc">$</span>RMSE,<span class="at">sep=</span><span class="st">""</span>))</span>
+<span id="cb136-12"><a href="#cb136-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "k1 CV Result 0.39011859000292"
 [1] "k2 CV Result 0.387043371742809"
@@ -1605,8 +1605,8 @@ Note
 [1] "k8 CV Result 0.332012297761635"
 [1] "k9 CV Result 0.329958007819844"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view summary of k-fold CV               </span></span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view summary of k-fold CV               </span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Regression 
 
@@ -1623,22 +1623,22 @@ Resampling results:
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We see that all of the variables minimize the prediction error. </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We see that all of the variables minimize the prediction error. </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="exm-8-5-2" class="theorem example">
 <p><span class="theorem-title"><strong>Example 9.12</strong></span> Use the NFL data from the textbook. 1. Compare the model <code>Wins~.</code> to the model <code>Wins~PassY+PuntA+FGP+TurnD+PenY+OPY+RushY</code>. 2. Run cross validation in a forward selection manner. That is, run the cross validation procedure for the model with the first variable, the first and the second variable, the first three variables etc. Which model has the lowest error? 3. Run cross validation for all subsets. Which model has the lowest error? Does it match the result in step 2?</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Cross Validation Regression ###########</span></span>
-<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1251</span>)</span>
-<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-5"><a href="#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="co">#specify the cross-validation method</span></span>
-<span id="cb143-6"><a href="#cb143-6" aria-hidden="true" tabindex="-1"></a>ctrl <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
-<span id="cb143-7"><a href="#cb143-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-8"><a href="#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="co">#fit a regression model and use k-fold CV to evaluate performance</span></span>
-<span id="cb143-9"><a href="#cb143-9" aria-hidden="true" tabindex="-1"></a>model_cv_1 <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
-<span id="cb143-10"><a href="#cb143-10" aria-hidden="true" tabindex="-1"></a>model_cv_1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="do">########### Cross Validation Regression ###########</span></span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1251</span>)</span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-5"><a href="#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="co">#specify the cross-validation method</span></span>
+<span id="cb141-6"><a href="#cb141-6" aria-hidden="true" tabindex="-1"></a>ctrl <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">5</span>)</span>
+<span id="cb141-7"><a href="#cb141-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-8"><a href="#cb141-8" aria-hidden="true" tabindex="-1"></a><span class="co">#fit a regression model and use k-fold CV to evaluate performance</span></span>
+<span id="cb141-9"><a href="#cb141-9" aria-hidden="true" tabindex="-1"></a>model_cv_1 <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<span id="cb141-10"><a href="#cb141-10" aria-hidden="true" tabindex="-1"></a>model_cv_1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Regression 
 
@@ -1655,8 +1655,8 @@ Resampling results:
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>model_cv_2 <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushY, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
-<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>model_cv_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>model_cv_2 <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>PassY<span class="sc">+</span>PuntA<span class="sc">+</span>FGP<span class="sc">+</span>TurnD<span class="sc">+</span>PenY<span class="sc">+</span>OPY<span class="sc">+</span>RushY, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a>model_cv_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Regression 
 
@@ -1673,13 +1673,13 @@ Resampling results:
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(df)){</span>
-<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># reg=sample(2:10,sample(1:9,1))</span></span>
-<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a>  vars<span class="ot">=</span><span class="fu">c</span>(<span class="fu">names</span>(df)[<span class="dv">2</span><span class="sc">:</span>i],<span class="st">'Wins'</span>)</span>
-<span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df[,vars], <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
-<span id="cb147-5"><a href="#cb147-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"k="</span> ,i<span class="dv">-1</span>,<span class="st">" vars "</span>,<span class="fu">paste</span>(vars,<span class="at">collapse=</span><span class="st">' '</span>),<span class="st">" CV Result "</span>,</span>
-<span id="cb147-6"><a href="#cb147-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">round</span>(model<span class="sc">$</span>results<span class="sc">$</span>RMSE,<span class="dv">1</span>),<span class="at">sep=</span><span class="st">""</span>))</span>
-<span id="cb147-7"><a href="#cb147-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(df)){</span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># reg=sample(2:10,sample(1:9,1))</span></span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a>  vars<span class="ot">=</span><span class="fu">c</span>(<span class="fu">names</span>(df)[<span class="dv">2</span><span class="sc">:</span>i],<span class="st">'Wins'</span>)</span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df[,vars], <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"k="</span> ,i<span class="dv">-1</span>,<span class="st">" vars "</span>,<span class="fu">paste</span>(vars,<span class="at">collapse=</span><span class="st">' '</span>),<span class="st">" CV Result "</span>,</span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">round</span>(model<span class="sc">$</span>results<span class="sc">$</span>RMSE,<span class="dv">1</span>),<span class="at">sep=</span><span class="st">""</span>))</span>
+<span id="cb145-7"><a href="#cb145-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "k=1 vars RushY Wins CV Result 2.9"
 [1] "k=2 vars RushY PassY Wins CV Result 2.3"
@@ -1691,34 +1691,34 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 [1] "k=8 vars RushY PassY PuntA FGP TurnD PenY PerR ORY Wins CV Result 2.5"
 [1] "k=9 vars RushY PassY PuntA FGP TurnD PenY PerR ORY OPY Wins CV Result 2"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select model k=9 vars</span></span>
-<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ncol</span>(df)<span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb149-5"><a href="#cb149-5" aria-hidden="true" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">list</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>), p)</span>
-<span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb149-7"><a href="#cb149-7" aria-hidden="true" tabindex="-1"></a>models<span class="ot">=</span><span class="fu">expand.grid</span>(l); <span class="fu">dim</span>(models)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select model k=9 vars</span></span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="fu">ncol</span>(df)<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb147-5"><a href="#cb147-5" aria-hidden="true" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">list</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>), p)</span>
+<span id="cb147-6"><a href="#cb147-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-7"><a href="#cb147-7" aria-hidden="true" tabindex="-1"></a>models<span class="ot">=</span><span class="fu">expand.grid</span>(l); <span class="fu">dim</span>(models)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 512   9</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>cv<span class="ot">=</span>RMSE<span class="ot">=</span><span class="fu">c</span>()</span>
-<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(models)){</span>
-<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a>  reg<span class="ot">=</span>(<span class="dv">2</span><span class="sc">:</span>(p<span class="sc">+</span><span class="dv">1</span>))[models[i,]<span class="sc">==</span><span class="dv">1</span>]</span>
-<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a>  vars<span class="ot">=</span><span class="fu">c</span>(<span class="fu">names</span>(df)[reg],<span class="st">'Wins'</span>)</span>
-<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df[,vars], <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
-<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a>  RMSE<span class="ot">=</span><span class="fu">c</span>(RMSE,model<span class="sc">$</span>results<span class="sc">$</span>RMSE)</span>
-<span id="cb151-7"><a href="#cb151-7" aria-hidden="true" tabindex="-1"></a>  cv<span class="ot">=</span><span class="fu">c</span>(cv,<span class="fu">list</span>(model))</span>
-<span id="cb151-8"><a href="#cb151-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print(paste0("k=" ,k," vars ",paste(vars,collapse=' ')," CV Result ",</span></span>
-<span id="cb151-9"><a href="#cb151-9" aria-hidden="true" tabindex="-1"></a>               <span class="co"># round(model$results$RMSE,1),sep=""))</span></span>
-<span id="cb151-10"><a href="#cb151-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb151-11"><a href="#cb151-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-12"><a href="#cb151-12" aria-hidden="true" tabindex="-1"></a>bottom_10<span class="ot">=</span><span class="fu">order</span>(RMSE)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span>
-<span id="cb151-13"><a href="#cb151-13" aria-hidden="true" tabindex="-1"></a>RMSE[bottom_10]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>cv<span class="ot">=</span>RMSE<span class="ot">=</span><span class="fu">c</span>()</span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(models)){</span>
+<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a>  reg<span class="ot">=</span>(<span class="dv">2</span><span class="sc">:</span>(p<span class="sc">+</span><span class="dv">1</span>))[models[i,]<span class="sc">==</span><span class="dv">1</span>]</span>
+<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a>  vars<span class="ot">=</span><span class="fu">c</span>(<span class="fu">names</span>(df)[reg],<span class="st">'Wins'</span>)</span>
+<span id="cb149-5"><a href="#cb149-5" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df[,vars], <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a>  RMSE<span class="ot">=</span><span class="fu">c</span>(RMSE,model<span class="sc">$</span>results<span class="sc">$</span>RMSE)</span>
+<span id="cb149-7"><a href="#cb149-7" aria-hidden="true" tabindex="-1"></a>  cv<span class="ot">=</span><span class="fu">c</span>(cv,<span class="fu">list</span>(model))</span>
+<span id="cb149-8"><a href="#cb149-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print(paste0("k=" ,k," vars ",paste(vars,collapse=' ')," CV Result ",</span></span>
+<span id="cb149-9"><a href="#cb149-9" aria-hidden="true" tabindex="-1"></a>               <span class="co"># round(model$results$RMSE,1),sep=""))</span></span>
+<span id="cb149-10"><a href="#cb149-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb149-11"><a href="#cb149-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-12"><a href="#cb149-12" aria-hidden="true" tabindex="-1"></a>bottom_10<span class="ot">=</span><span class="fu">order</span>(RMSE)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb149-13"><a href="#cb149-13" aria-hidden="true" tabindex="-1"></a>RMSE[bottom_10]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1.602365 1.619883 1.639797 1.662903 1.699846 1.733090 1.737918 1.740185
  [9] 1.749398 1.753767</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(RMSE))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(RMSE))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1726,8 +1726,8 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">=</span><span class="fu">which.min</span>(RMSE)</span>
-<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a>cv[<span class="fu">which.min</span>(RMSE)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>m<span class="ot">=</span><span class="fu">which.min</span>(RMSE)</span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>cv[<span class="fu">which.min</span>(RMSE)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 Linear Regression 
@@ -1745,38 +1745,43 @@ Resampling results:
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,(<span class="dv">2</span><span class="sc">:</span>(p<span class="sc">+</span><span class="dv">1</span>))[<span class="fu">unlist</span>(models[m,])<span class="sc">==</span><span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,(<span class="dv">2</span><span class="sc">:</span>(p<span class="sc">+</span><span class="dv">1</span>))[<span class="fu">unlist</span>(models[m,])<span class="sc">==</span><span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  RushY PuntA PenY PerR  ORY  OPY
 1  2113  38.9  868 59.7 2205 1917</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span> PassY<span class="sc">+</span>PuntA<span class="sc">+</span>TurnD<span class="sc">+</span>PerR<span class="sc">+</span>OPY<span class="sc">+</span>RushY, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
-<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>RMSE<span class="ot">=</span><span class="fu">c</span>(RMSE,model<span class="sc">$</span>results<span class="sc">$</span>RMSE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">train</span>(Wins<span class="sc">~</span> PassY<span class="sc">+</span>PuntA<span class="sc">+</span>TurnD<span class="sc">+</span>PerR<span class="sc">+</span>OPY<span class="sc">+</span>RushY, <span class="at">data =</span> df, <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> ctrl)</span>
+<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a>RMSE<span class="ot">=</span><span class="fu">c</span>(RMSE,model<span class="sc">$</span>results<span class="sc">$</span>RMSE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lasso-regression" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="lasso-regression"><span class="header-section-number">9.5</span> LASSO Regression</h2>
 <p>Lasso regression (Least Absolute Shrinkage and Selection Operator) is a technique for linear models that adds a penalty term to the least squares loss function. <span class="math display">\[\hat{\beta}_{LASSO}=\mathop{\mathrm{argmin}}_\beta\left\lVert Y-X\beta\right\rVert^2+\lambda\left\lVert\beta\right\rVert_1\]</span> This penalty actually ``shrinks’’ some coefficients exactly to zero, effectively performing variable selection. Lasso is particularly useful when dealing with high-dimensional data where the number of predictors may exceed the number of observations. The parameter <span class="math inline">\(\lambda\)</span> is a tuning parameter, which controls the amount of shrinkage. It is typically chosen via cross validation. It is great for variable selection and prediction problems, but obtaining p-values and other inferential quantities is not so straightforward.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co">#.. </span></span>
-<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co">#.. </span></span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'glmnet' was built under R version 4.5.2</code></pre>
+</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: Matrix</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loaded glmnet 4.1-9</code></pre>
+<pre><code>Loaded glmnet 4.1-10</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df)</span>
-<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
-<span id="cb162-3"><a href="#cb162-3" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, df<span class="sc">$</span>Wins, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
-<span id="cb162-4"><a href="#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb162-5"><a href="#cb162-5" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
-<span id="cb162-6"><a href="#cb162-6" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df)</span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove intercept</span></span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span>X[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, df<span class="sc">$</span>Wins, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2704249</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
-<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1784,12 +1789,13 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>11 x 1 sparse Matrix of class "dgCMatrix"
-                       s0
+<pre><code>10 x 1 sparse Matrix of class "dgCMatrix"
+               lambda.1se
 (Intercept) 10.7211210917
-(Intercept)  .           
 RushY        0.0007812133
 PassY        0.0016929743
 PuntA        .           
@@ -1799,6 +1805,85 @@ PenY         .
 PerR         .           
 ORY         -0.0042682806
 OPY          .           </code></pre>
+</div>
+</div>
+<p>We can also try the real estate data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our example from previous units:</span></span>
+<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a>df5<span class="ot">=</span>df2[df2<span class="sc">$</span>District<span class="sc">!=</span><span class="dv">3</span>,]</span>
+<span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a>df5<span class="sc">$</span>District<span class="ot">=</span><span class="fu">droplevels</span>(df5<span class="sc">$</span>District)</span>
+<span id="cb166-4"><a href="#cb166-4" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">=</span>df5</span>
+<span id="cb166-5"><a href="#cb166-5" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Sale_price<span class="sc">~</span>District<span class="sc">+</span>Extwall<span class="sc">+</span>Stories<span class="sc">+</span>Year_Built<span class="sc">+</span>Fin_sqft<span class="sc">+</span>Units<span class="sc">+</span>Bdrms<span class="sc">+</span>Fbath<span class="sc">+</span>Lotsize<span class="sc">+</span>Sale_date, <span class="at">data =</span> df2)</span>
+<span id="cb166-6"><a href="#cb166-6" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
+<span id="cb166-7"><a href="#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove intercept</span></span>
+<span id="cb166-8"><a href="#cb166-8" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span>X[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb166-9"><a href="#cb166-9" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, <span class="fu">sqrt</span>(df2<span class="sc">$</span>Sale_price), <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
+<span id="cb166-10"><a href="#cb166-10" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
+<span id="cb166-11"><a href="#cb166-11" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05266812</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Unit_8_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>46 x 1 sparse Matrix of class "dgCMatrix"
+                          lambda.1se
+(Intercept)            -8.635785e+02
+District2               1.134907e+01
+District4              -4.028622e+01
+District5               7.137695e+01
+District6               .           
+District7              -1.954226e+01
+District8               1.880525e+01
+District9               4.307692e+01
+District10              7.934201e+01
+District11              9.296592e+01
+District12              2.317774e-01
+District13              9.032709e+01
+District14              1.284919e+02
+District15             -5.282402e+01
+ExtwallBlock           -3.589080e+00
+ExtwallBrick            7.581600e+00
+ExtwallFiber-Cement     4.809818e+01
+ExtwallFrame           -3.851441e+00
+ExtwallMasonry / Frame  2.764569e+00
+ExtwallPrem Wood        8.357316e+00
+ExtwallStone            1.751120e+01
+ExtwallStucco           5.022336e+00
+Stories1               -1.520187e+01
+Stories1.5              .           
+Stories2                1.598476e+00
+Year_Built              4.653726e-01
+Fin_sqft                7.077201e-02
+Units1                  7.000043e+01
+Units2                 -3.323116e+00
+Units3                 -2.992420e+01
+Bdrms0                  8.837086e+00
+Bdrms1                 -1.482303e+01
+Bdrms2                 -5.203189e+00
+Bdrms3                  8.495290e+00
+Bdrms4                  4.591476e-01
+Bdrms5                  .           
+Bdrms6                 -1.505946e+01
+Bdrms7                 -2.745586e+01
+Bdrms8                 -2.561850e+01
+Fbath0                  .           
+Fbath1                 -2.185965e+01
+Fbath2                  .           
+Fbath3                  8.628325e+00
+Fbath4                  .           
+Lotsize                 2.131218e-03
+Sale_date               5.418531e-03</code></pre>
 </div>
 </div>
 </section>
