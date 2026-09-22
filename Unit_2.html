@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -160,9 +160,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Math 3330: Regression Notes</a> 
     </div>
@@ -615,17 +613,17 @@ Caution
 <section id="the-multiple-linear-regression-model" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="the-multiple-linear-regression-model"><span class="header-section-number">3.1.2</span> The multiple linear regression model</h3>
 <p>But what about matrices? Why did we study matrices then? We can write the regression model in terms of matrices and vectors, to make it more compact.</p>
-<p>Now, recall the the linear regression model is <span class="math display">\[Y_i|X_i=\beta_0+\beta_1 X_i+\epsilon_i,\]</span> with with <span class="math inline">\({\textrm{E}}\left[(\right]\epsilon_i)=0\ , {\textrm{Var}}\left[(\right]\epsilon_i)=\sigma^2)\)</span>, and all <span class="math inline">\(\epsilon_j\perp\epsilon_j\)</span>.<br>
+<p>Now, recall the the linear regression model is <span class="math display">\[Y_i|X_i=\beta_0+\beta_1 X_i+\epsilon_i,\]</span> with with <span class="math inline">\({\textrm{E}}\left[\epsilon_i\right]=0\ , {\textrm{Var}}\left[\epsilon_i\right]=\sigma^2)\)</span>, and all <span class="math inline">\(\epsilon_j\perp\epsilon_j\)</span>.<br>
 It is more convenient mathematically to let <span class="math inline">\(\mathbf{Y}=(Y_1,\ldots,Y_n)^\top\)</span>, <span class="math display">\[\mathbf{X}=\begin{bmatrix}
         1 &amp; X_1\\
         \vdots &amp; \vdots\\
         1 &amp; X_n\\
     \end{bmatrix}=\left[ 1_n\ |\  (X_1,\ldots,X_n)^\top\right],\]</span> <span class="math inline">\(\beta=(\beta_0,\beta_1)^\top\)</span> and <span class="math inline">\(\mathbf{\epsilon}=(\epsilon_1,\ldots,\epsilon_n)^\top\)</span>. Then we can write <span class="math display">\[\mathbf{Y}|\mathbf{X}=\mathbf{X}\beta+\mathbf{\epsilon}.\]</span> Often, we overload the notation <span class="math inline">\(Y\)</span>, and use <span class="math inline">\(Y\)</span> instead of <span class="math inline">\(\mathbf{Y}\)</span>, and <span class="math inline">\(X\)</span> instead of <span class="math inline">\(\mathbf{X}\)</span>.</p>
-<p>This form allows us to go beyond one explanatory variable very easily! Just add one column to <span class="math inline">\(X\)</span> and one entry to <span class="math inline">\(\beta\)</span> for each new variable. Observe the following model: <span class="math display">\[Y_i|(X_{i1},\ldots,X_{ik})=\beta_0+\beta_1 X_{i1}+\ldots+\beta_k X_{ik}+\epsilon_i,\]</span> with <span class="math inline">\({\textrm{E}}\left[(\right]\epsilon_i)=0\ , {\textrm{Var}}\left[(\right]\epsilon_i)=\sigma^2)\)</span> and <span class="math inline">\(\epsilon_i\perp \epsilon_j\)</span> for <span class="math inline">\(i\neq j,\ i,j\in [n]\)</span>. This is known as the <strong>multiple linear regression model</strong> (MLR), or just the linear regression model for short. We can write this model in the same for as above: Let <span class="math display">\[\mathbf{X}=\begin{bmatrix}
+<p>This form allows us to go beyond one explanatory variable very easily! Just add one column to <span class="math inline">\(X\)</span> and one entry to <span class="math inline">\(\beta\)</span> for each new variable. Observe the following model: <span class="math display">\[Y_i|(X_{i1},\ldots,X_{ik})=\beta_0+\beta_1 X_{i1}+\ldots+\beta_k X_{ik}+\epsilon_i,\]</span> with <span class="math inline">\({\textrm{E}}\left[\epsilon_i\right]=0\ , {\textrm{Var}}\left[\epsilon_i\right]=\sigma^2)\)</span> and <span class="math inline">\(\epsilon_i\perp \epsilon_j\)</span> for <span class="math inline">\(i\neq j,\ i,j\in [n]\)</span>. This is known as the <strong>multiple linear regression model</strong> (MLR), or just the linear regression model for short. We can write this model in the same for as above: Let <span class="math display">\[\mathbf{X}=\begin{bmatrix}
         1 &amp; X_{11}&amp;X_{1k}\\
         \vdots &amp; \vdots &amp;\vdots\\
         1 &amp; X_{n1}\ldots &amp;X_{nk}\\
-    \end{bmatrix},\]</span> and <span class="math inline">\(\beta=(\beta_0,\ldots,\beta_k)^\top\)</span>. Then we can write the MLR as <span class="math display">\[\mathbf{Y}|\mathbf{X}=\mathbf{X}\beta+\mathbf{\epsilon},\]</span> where <span class="math inline">\({\textrm{E}}\left[(\right]\epsilon)=0\)</span>, <span class="math inline">\(\epsilon_i\perp \epsilon_j\)</span> for all <span class="math inline">\(i\neq j\in [n]\)</span> and <span class="math inline">\({\textrm{Var}}\left[\epsilon\right]=\sigma^2 I\)</span>. Notice how compact this is! As in the simple case, there is also the <strong>normal MLR</strong>, which further assumes that <span class="math inline">\(\epsilon\sim\mathcal{N}(0,\sigma^2 I)\)</span>.</p>
+    \end{bmatrix},\]</span> and <span class="math inline">\(\beta=(\beta_0,\ldots,\beta_k)^\top\)</span>. Then we can write the MLR as <span class="math display">\[\mathbf{Y}|\mathbf{X}=\mathbf{X}\beta+\mathbf{\epsilon},\]</span> where <span class="math inline">\({\textrm{E}}\left[\epsilon\right]=0\)</span>, <span class="math inline">\(\epsilon_i\perp \epsilon_j\)</span> for all <span class="math inline">\(i\neq j\in [n]\)</span> and <span class="math inline">\({\textrm{Var}}\left[\epsilon\right]=\sigma^2 I\)</span>. Notice how compact this is! As in the simple case, there is also the <strong>normal MLR</strong>, which further assumes that <span class="math inline">\(\epsilon\sim\mathcal{N}(0,\sigma^2 I)\)</span>.</p>
 <p>We can then study the mathematical properties of <span class="math display">\[Y|X=X\beta+\epsilon\]</span> for general but fixed <span class="math inline">\(k\)</span>, under either the normal MLR or just the MLR, which will cover many models.</p>
 </section>
 <section id="homework-stop-1" class="level3" data-number="3.1.3">

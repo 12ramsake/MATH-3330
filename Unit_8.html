@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -160,9 +160,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Math 3330: Regression Notes</a> 
     </div>
@@ -1577,7 +1575,7 @@ Note
 <span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('caret')</span></span>
 <span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'caret' was built under R version 4.5.2</code></pre>
+<pre><code>Warning: package 'caret' was built under R version 4.5.3</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: lattice</code></pre>
@@ -1761,27 +1759,24 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co">#.. </span></span>
 <span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'glmnet' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: Matrix</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loaded glmnet 4.1-10</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df)</span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
-<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove intercept</span></span>
-<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span>X[,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, df<span class="sc">$</span>Wins, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
-<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
-<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Wins<span class="sc">~</span>., <span class="at">data =</span> df)</span>
+<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
+<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove intercept</span></span>
+<span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span>X[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb160-5"><a href="#cb160-5" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, df<span class="sc">$</span>Wins, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
+<span id="cb160-6"><a href="#cb160-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-7"><a href="#cb160-7" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
+<span id="cb160-8"><a href="#cb160-8" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2704249</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
+<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1789,9 +1784,9 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
-<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>10 x 1 sparse Matrix of class "dgCMatrix"
                lambda.1se
@@ -1809,22 +1804,22 @@ OPY          .           </code></pre>
 </div>
 <p>We can also try the real estate data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our example from previous units:</span></span>
-<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a>df5<span class="ot">=</span>df2[df2<span class="sc">$</span>District<span class="sc">!=</span><span class="dv">3</span>,]</span>
-<span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a>df5<span class="sc">$</span>District<span class="ot">=</span><span class="fu">droplevels</span>(df5<span class="sc">$</span>District)</span>
-<span id="cb166-4"><a href="#cb166-4" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">=</span>df5</span>
-<span id="cb166-5"><a href="#cb166-5" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Sale_price<span class="sc">~</span>District<span class="sc">+</span>Extwall<span class="sc">+</span>Stories<span class="sc">+</span>Year_Built<span class="sc">+</span>Fin_sqft<span class="sc">+</span>Units<span class="sc">+</span>Bdrms<span class="sc">+</span>Fbath<span class="sc">+</span>Lotsize<span class="sc">+</span>Sale_date, <span class="at">data =</span> df2)</span>
-<span id="cb166-6"><a href="#cb166-6" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
-<span id="cb166-7"><a href="#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove intercept</span></span>
-<span id="cb166-8"><a href="#cb166-8" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span>X[,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb166-9"><a href="#cb166-9" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, <span class="fu">sqrt</span>(df2<span class="sc">$</span>Sale_price), <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
-<span id="cb166-10"><a href="#cb166-10" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
-<span id="cb166-11"><a href="#cb166-11" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our example from previous units:</span></span>
+<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a>df5<span class="ot">=</span>df2[df2<span class="sc">$</span>District<span class="sc">!=</span><span class="dv">3</span>,]</span>
+<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a>df5<span class="sc">$</span>District<span class="ot">=</span><span class="fu">droplevels</span>(df5<span class="sc">$</span>District)</span>
+<span id="cb165-4"><a href="#cb165-4" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">=</span>df5</span>
+<span id="cb165-5"><a href="#cb165-5" aria-hidden="true" tabindex="-1"></a>model<span class="ot">=</span><span class="fu">lm</span>(Sale_price<span class="sc">~</span>District<span class="sc">+</span>Extwall<span class="sc">+</span>Stories<span class="sc">+</span>Year_Built<span class="sc">+</span>Fin_sqft<span class="sc">+</span>Units<span class="sc">+</span>Bdrms<span class="sc">+</span>Fbath<span class="sc">+</span>Lotsize<span class="sc">+</span>Sale_date, <span class="at">data =</span> df2)</span>
+<span id="cb165-6"><a href="#cb165-6" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">model.matrix</span>(model)</span>
+<span id="cb165-7"><a href="#cb165-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove intercept</span></span>
+<span id="cb165-8"><a href="#cb165-8" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span>X[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb165-9"><a href="#cb165-9" aria-hidden="true" tabindex="-1"></a>cv_model <span class="ot">=</span> <span class="fu">cv.glmnet</span>(X, <span class="fu">sqrt</span>(df2<span class="sc">$</span>Sale_price), <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nfolds=</span><span class="dv">5</span>)</span>
+<span id="cb165-10"><a href="#cb165-10" aria-hidden="true" tabindex="-1"></a>best_lambda <span class="ot">=</span> cv_model<span class="sc">$</span>lambda.min</span>
+<span id="cb165-11"><a href="#cb165-11" aria-hidden="true" tabindex="-1"></a>best_lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.05266812</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
-<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of test MSE by lambda</span></span>
+<span id="cb167-2"><a href="#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1832,9 +1827,9 @@ OPY          .           </code></pre>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
-<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients:</span></span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cv_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>46 x 1 sparse Matrix of class "dgCMatrix"
                           lambda.1se
