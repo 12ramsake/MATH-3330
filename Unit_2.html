@@ -2128,7 +2128,7 @@ carb         -1.94235037  1.43215215</code></pre>
 <li>Regress the <span class="math inline">\(jth\)</span> covariate, <span class="math inline">\(X_j\)</span>, on the remaining covariates and compute the residuals: <span class="math inline">\(\delta_j\)</span>.</li>
 <li>Regress <span class="math inline">\(Y\)</span> on <span class="math inline">\(\delta_j\)</span>, in particular, the coefficient for <span class="math inline">\(\delta_j\)</span> will be equal to <span class="math inline">\(\hat\beta_j=\frac{cov(y,\delta_j)}{var(\delta_j)}\)</span>.</li>
 </ol>
-<p>Here <span class="math inline">\({\textrm{cov}}\left[(\right]y,\delta_j)\)</span> and <span class="math inline">\(var(\delta_j)\)</span> refer to the sample quantities, as in the sample covariance between <span class="math inline">\(y\)</span> and <span class="math inline">\(\delta_j\)</span> and the sample variance of <span class="math inline">\(\delta_j\)</span>.</p>
+<p>Here, <span class="math inline">\({\textrm{cov}}\left[y,\delta_j\right]\)</span> and <span class="math inline">\(var(\delta_j)\)</span> refer to the sample quantities, as in the sample covariance between <span class="math inline">\(y\)</span> and <span class="math inline">\(\delta_j\)</span> and the sample variance of <span class="math inline">\(\delta_j\)</span>.</p>
 <p>The theorem has multiple implications. Importantly, the part of <span class="math inline">\(X_j\)</span> explained by other predictors is removed when computing it’s coefficient. See the following simulation. Here <span class="math inline">\(Z\)</span> and <span class="math inline">\(W\)</span> both contribute some information about <span class="math inline">\(Y\)</span>, but nothing beyond what <span class="math inline">\(X\)</span> gives. So once we include <span class="math inline">\(X\)</span>, <span class="math inline">\(Z\)</span> and <span class="math inline">\(W\)</span> no longer meaningfully explain <span class="math inline">\(Y\)</span>. Also, we verify the FWL theorem for the coefficient <span class="math inline">\(W\)</span>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample size</span></span>
@@ -2244,12 +2244,14 @@ F-statistic: 0.03687 on 1 and 998 DF,  p-value: 0.8478</code></pre>
 <p>Suppose you are mainly interested in estimating or isolating the total causal effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>. Then, given the previous section, it’s important to be careful what variables we include in our model. Any confounders should be included in the model. Confounders are variables that affect both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, creating a fake or spurious causal relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> or distorting a causal relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <p>Blocking variables, or mediators, are ones that “mediate” the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. They should <em>not</em> be included, as they will either partially or fully obscure or block the effect of <span class="math inline">\(X\)</span>. These are intermediate mechanisms, that may be consequences of <span class="math inline">\(X\)</span>, that we do not wish to control for.</p>
 <p>We must also be aware of something called <strong>collider bias</strong>. A collider is a variable <span class="math inline">\(C\)</span> such that both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have a causal effect on <span class="math inline">\(C\)</span>. If we include <span class="math inline">\(C\)</span> in the model, then it can create a fake or spurious relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, so these variables should also be omitted.</p>
-<p>Examples: Suppose we are interested in exam scores and universities in general, then an example of each of the previous terms:</p>
+<div id="exm-3-4-1" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.9</strong></span> Suppose we are interested in exam scores and universities in general, then an example of each of the previous terms:</p>
 <ol type="1">
 <li><em>Confounder:</em> Prior preparation affects both tutoring participation and exam scores. Leaving it out can distort the estimated effect of tutoring.</li>
 <li><em>Mediator:</em> Tutoring increases understanding, which improves exam scores. Controlling for understanding removes the pathway through which tutoring works. Therefore, understanding would block the relationship between tutoring and exam scores.</li>
 <li><em>Collider:</em> Admission to a university depends on both academic achievement and athletic ability. Among admitted students, weaker academic achievement may be compensated for by stronger athletic ability, creating a perceived negative association between athletic ability and academic achievement, even if the two are independent in the applicant population.</li>
 </ol>
+</div>
 <p>Lastly, moderators may change or moderate the effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>, and we will cover those in a later section, where we discuss interaction effects.</p>
 </section>
 </section>
@@ -2269,7 +2271,7 @@ F-statistic: 0.03687 on 1 and 998 DF,  p-value: 0.8478</code></pre>
 </ul>
 <p>See below for an example: <embed src="plots/QQPlots.PDF" width="640" height="480"> Note that you will always have some deviation at the ends of the line in the qq-plot.</p>
 <div id="exm-3-1-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.9</strong></span> In examples <a href="#exm-3-1-1" class="quarto-xref">Example&nbsp;<span>3.1</span></a> and <a href="#exm-3-4-5" class="quarto-xref">Example&nbsp;<span>3.7</span></a>, check that the normality assumption is valid.</p>
+<p><span class="theorem-title"><strong>Example 3.10</strong></span> In examples <a href="#exm-3-1-1" class="quarto-xref">Example&nbsp;<span>3.1</span></a> and <a href="#exm-3-4-5" class="quarto-xref">Example&nbsp;<span>3.7</span></a>, check that the normality assumption is valid.</p>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the data frame</span></span>
@@ -2636,7 +2638,7 @@ Note
 \hat\theta \pm z_{\alpha/2} \sqrt{\frac{1}{n-3}},
 \]</span> and the corresponding confidence interval of <span class="math inline">\(\rho\)</span> can be obtained by the inverse transformation. Similarly, if the hypothesized value of <span class="math inline">\(\rho\)</span> is <span class="math inline">\(\rho_0\)</span>, then the hypothesized value of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(\theta_0 = \frac{1}{2} \log \frac{1 + \rho_0}{1-\rho_0}\)</span>. The observed test statistic can be obtained and the corresponding <span class="math inline">\(p\)</span>-value can be obtained based on the standard normal distribution.</p>
 <div id="exm-3-6-2" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.10</strong></span> In <a href="#exm-3-1-1" class="quarto-xref">Example&nbsp;<span>3.1</span></a> test if the correlation between body fat and weight is 0. Next, test if the correlation is greater than 1/2. Construct a 95% CI for <span class="math inline">\(\rho.\)</span></p>
+<p><span class="theorem-title"><strong>Example 3.11</strong></span> In <a href="#exm-3-1-1" class="quarto-xref">Example&nbsp;<span>3.1</span></a> test if the correlation between body fat and weight is 0. Next, test if the correlation is greater than 1/2. Construct a 95% CI for <span class="math inline">\(\rho.\)</span></p>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="do">############################ Exploratory</span></span>
@@ -2802,7 +2804,7 @@ X = \left( \begin{array}{cc} 1 &amp; x_1 \\ \vdots &amp; \vdots \\ 1 &amp; x_n \
 </div>
 <p>Next, we do an example from the textbook, which uses the NFL data. Specifically, we try to evaluate the relationship between number of wins and several explanatory variables.</p>
 <div id="exm-3-6-1" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.11</strong></span> Using the following NFL data, complete 3.1-3.4, 4.1 and 4.2 in the textbook.</p>
+<p><span class="theorem-title"><strong>Example 3.12</strong></span> Using the following NFL data, complete 3.1-3.4, 4.1 and 4.2 in the textbook.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="do">################## NFL example #################</span></span>
 <span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This gives you the data sets used in the textbook</span></span>
