@@ -309,7 +309,12 @@ window.Quarto = {
 <li><span class="math inline">\(\beta\in \mathbb{R}^{p\times 1}\)</span> is the unknown, population coefficient vector</li>
 <li><span class="math inline">\(X\in \mathbb{R}^{n\times p}\)</span> is a covariate matrix</li>
 </ul>
-<p>We assume that: - The relationship is linear <span class="math inline">\(Y|X=X\beta+\epsilon,\)</span> - <span class="math inline">\(\forall i\in[n]\)</span>, <span class="math inline">\(\epsilon_i\sim \mathcal{N}(0,\sigma^2)\)</span>. - <span class="math inline">\(\epsilon_i\perp \epsilon_j\)</span> for <span class="math inline">\(i\neq j,\ i,j\in [n]\)</span>.</p>
+<p>We assume that:</p>
+<ul>
+<li>The relationship is linear <span class="math inline">\(Y|X=X\beta+\epsilon,\)</span></li>
+<li><span class="math inline">\(\forall i\in[n]\)</span>, <span class="math inline">\(\epsilon_i\sim \mathcal{N}(0,\sigma^2)\)</span>.</li>
+<li><span class="math inline">\(\epsilon_i\perp \epsilon_j\)</span> for <span class="math inline">\(i\neq j,\ i,j\in [n]\)</span>.</li>
+</ul>
 <p>We have seen some methods for checking if these are appropriate, we will dive deeper now.</p>
 <p>Recall that the residuals are defined as: <span class="math display">\[\hat\epsilon=Y-\hat Y=Y-X\hat \beta.\]</span></p>
 <p>Given that a residual may be viewed as the deviation between the data and the fit, it is also a measure of the variability in the response variable not explained by the regression model. It is also convenient to think of the residuals as the realized or observed values of the model errors. Thus, it’s reasonable to conclude that departures from the assumptions on the errors should show up in the residuals. Analysis of the residuals is an effective way to discover several types of model inadequacies.</p>
